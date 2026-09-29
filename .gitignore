@@ -1,0 +1,10 @@
+node_modules/
+web/dist/
+*.local
+.DS_Store
+
+# Supabase local state and secrets
+supabase/.temp/
+supabase/.branches/
+supabase/functions/.env
+supabase/functions/.local/
