@@ -1,0 +1,14 @@
+# Netlify: build the React app in web/ and serve it as a single-page app.
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Client-side routes (/parent, /admin/…) all load index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
