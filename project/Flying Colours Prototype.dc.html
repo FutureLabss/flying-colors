@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="_ds/modernist-22861add-5399-4fdf-bad8-557174796d03/styles.css"><script src="_ds/modernist-22861add-5399-4fdf-bad8-557174796d03/_ds_bundle.js"></script><style>body{margin:0;background:var(--color-neutral-300)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}button{font-family:var(--font-body)}</style></helmet>
+<div style="position:sticky;top:0;z-index:20;background:var(--color-text);color:#fff;display:flex;align-items:center;gap:16px;padding:8px 16px;flex-wrap:wrap">
+  <div style="font-weight:800;font-size:14px">Flying Colours <span style="color:var(--color-neutral-500);font-weight:400">· V1 prototype</span></div>
+  <div style="display:flex;border:1px solid var(--color-neutral-700)">
+    <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4"><button onClick="{{ r.onClick }}" style="font-weight:600;font-size:13px;padding:7px 14px;border:0;cursor:pointer;background:{{ r.bg }};color:{{ r.fg }}">{{ r.label }}</button></sc-for>
+  </div>
+  <div style="display:flex;gap:4px;flex-wrap:wrap">
+    <sc-for list="{{ screens }}" as="x" hint-placeholder-count="2"><button onClick="{{ x.onClick }}" style="font-size:13px;padding:7px 10px;border:0;border-bottom:3px solid {{ x.bd }};cursor:pointer;background:transparent;color:{{ x.fg }}">{{ x.label }}</button></sc-for>
+  </div>
+</div>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:16px;bottom:16px;z-index:30;background:var(--color-text);color:#fff;padding:14px 18px;font-size:14px;max-width:420px;box-shadow:var(--shadow-lg);border-left:4px solid var(--color-accent)">{{ toast }}</div>
+</sc-if>
+
+<sc-if value="{{ on.p_home }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:2px solid var(--color-divider)">
+    <div style="font:800 17px/1 var(--font-heading)">Flying Colours</div>
+    <div style="font-size:13px;color:var(--color-neutral-700)">Mrs F. Adeyemi</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid var(--color-divider)">
+    <sc-for list="{{ childTabs }}" as="c" hint-placeholder-count="2">
+      <button onClick="{{ c.onClick }}" style="text-align:left;background:transparent;border:0;border-bottom:3px solid {{ c.bd }};padding:12px 16px;cursor:pointer;min-height:56px"><div style="font-weight:800;font-size:15px;color:{{ c.fg }}">{{ c.label }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ c.cls }}</div></button>
+    </sc-for>
+  </div>
+  <div style="padding:20px 16px 16px">
+    <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Tuesday · Week 14 · 28 Sep – 4 Oct</div>
+    <h2 style="font-size:26px;margin:6px 0 16px;text-wrap:pretty">{{ ch.head }}</h2>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid var(--color-text);border-bottom:1px solid var(--color-divider)">
+      <div style="padding:8px 4px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">Mon</div><div style="font-size:11px;font-weight:600;margin-top:4px">Task</div></div>
+      <div style="padding:8px 4px;background:var(--color-accent);color:#fff"><div style="font-size:11px">Tue</div><div style="font-size:11px;font-weight:800;margin-top:4px">Fdbk</div></div>
+      <div style="padding:8px 4px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">Wed</div><div style="font-size:11px;font-weight:600;margin-top:4px">Task</div></div>
+      <div style="padding:8px 4px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">Thu</div></div>
+      <div style="padding:8px 4px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">Fri</div><div style="font-size:11px;font-weight:600;margin-top:4px">Fdbk</div></div>
+      <div style="padding:8px 4px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">Sat</div><div style="font-size:11px;font-weight:600;margin-top:4px">Live</div></div>
+      <div style="padding:8px 4px"><div style="font-size:11px;color:var(--color-neutral-700)">Sun</div><div style="font-size:11px;font-weight:600;margin-top:4px">Live</div></div>
+    </div>
+  </div>
+  <div style="border-top:2px solid var(--color-divider)">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 16px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Monday task · due Tue 3 pm</div><span class="tag" style="background:{{ ch.tagBg }};color:{{ ch.tagFg }}">{{ ch.taskTag }}</span>
+      <div style="font-weight:800;font-size:16px">{{ ch.task }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ ch.taskAt }}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 16px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Latest feedback · Fri</div><span class="tag tag-accent">{{ ch.fbTag }}</span>
+      <div style="font-size:14px;line-height:1.45;grid-column:1 / -1">{{ ch.fb }}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 16px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Next live class · Zoom</div><div></div>
+      <div style="font-weight:800;font-size:16px">Sat 3 Oct · 5:00 pm WAT</div><button class="btn btn-ghost" onClick="{{ recToast }}">Last recording</button>
+    </div>
+    <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Attendance · last 8 classes</div>
+      <div style="display:flex;gap:4px;align-items:center;flex-wrap:wrap">
+        <sc-for list="{{ ch.att }}" as="a" hint-placeholder-count="8"><div style="width:26px;height:26px;background:{{ a.bg }};border:2px solid {{ a.bd }}"></div></sc-for>
+        <div style="font-size:12px;margin-left:6px;color:var(--color-neutral-700)">{{ ch.attNote }}</div>
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--color-text);color:var(--color-bg);padding:16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center">
+    <div><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-400)">{{ ch.subKick }}</div><div style="font-weight:800;font-size:16px;margin-top:2px">{{ ch.subLine }}</div><div style="font-size:12px;color:var(--color-neutral-400)">{{ ch.subPlan }}</div></div>
+    <button class="btn btn-primary" style="min-height:44px" onClick="{{ onRenew }}">Renew now</button>
+  </div>
+  <div style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px">
+    <div style="font-size:12px;color:var(--color-neutral-700)">Weekly summary goes to WhatsApp every Sunday.</div>
+    <button class="btn btn-secondary" onClick="{{ addChild }}">Add a child</button>
+  </div>
+  <div style="position:sticky;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--color-divider);background:var(--color-bg)"><sc-for list="{{ ptabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.onClick }}" style="min-height:52px;border:0;border-top:3px solid {{ t.bd }};background:transparent;cursor:pointer;font-size:14px;font-weight:600;text-align:left;padding:0 16px;color:{{ t.fg }}">{{ t.label }}</button></sc-for></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.p_signup }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md);min-height:760px;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:2px solid var(--color-divider)">
+    <div style="font:800 17px/1 var(--font-heading)">Flying Colours</div>
+    <div style="font-size:12px;color:var(--color-neutral-700)">Communication &amp; English · Ages 5–13</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--color-divider)">
+    <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4"><div style="padding:10px 8px;background:{{ p.bg }};color:{{ p.fg }};font-size:12px;font-weight:600;border-right:1px solid var(--color-divider)">{{ p.n }} · {{ p.label }}</div></sc-for>
+  </div>
+
+  <sc-if value="{{ st.s1 }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:20px 16px;display:flex;flex-direction:column;gap:14px">
+    <div><h2 style="font-size:28px;margin:0 0 6px">About you</h2><p style="margin:0;font-size:14px;color:var(--color-neutral-800)">You hold the account. Class reminders and feedback alerts come to this number.</p></div>
+    <div class="field"><label>Full name</label><input class="input" style="min-height:44px" defaultValue="Funmi Adeyemi"></div>
+    <div class="field"><label>WhatsApp number</label><input class="input" style="min-height:44px" defaultValue="+234 803 412 7765"></div>
+    <div class="field"><label>Email</label><input class="input" style="min-height:44px" defaultValue="funmi.adeyemi@gmail.com"></div>
+    <div class="field"><label>Country</label><select class="input" style="min-height:44px"><option>Nigeria</option><option>United Kingdom</option><option>United States</option><option>Canada</option></select></div>
+    <div style="border-top:2px solid var(--color-divider);padding-top:14px;display:flex;flex-direction:column;gap:10px">
+      <label style="display:flex;gap:10px;font-size:13px;line-height:1.4"><input type="checkbox" defaultChecked style="accent-color:var(--color-accent);width:18px;height:18px;flex:none">I agree to Flying Colours processing my child’s details, as set out in the privacy notice (NDPA 2023).</label>
+      <label style="display:flex;gap:10px;font-size:13px;line-height:1.4"><input type="checkbox" defaultChecked style="accent-color:var(--color-accent);width:18px;height:18px;flex:none">I consent to class recordings and to my child’s submitted videos being kept for up to 12 months after they leave.</label>
+    </div>
+    <button class="btn btn-primary btn-block" style="min-height:48px;font-size:15px" onClick="{{ next }}">Continue</button>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ st.s2 }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:20px 16px;display:flex;flex-direction:column;gap:14px">
+    <div><h2 style="font-size:28px;margin:0 0 6px">Your child</h2><p style="margin:0;font-size:14px;color:var(--color-neutral-800)">We only need a first name. Children don’t need an email or phone number.</p></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px">
+      <div class="field"><label>First name</label><input class="input" style="min-height:44px" defaultValue="Tolu"></div>
+      <div class="field"><label>Age</label><select class="input" style="min-height:44px"><option>6</option><option>7</option><option selected>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div>
+    </div>
+    <div class="field"><label>Reading and speaking level</label>
+      <div class="seg" style="display:flex">
+        <label class="seg-opt" style="flex:1"><input type="radio" name="lvl">Starter</label>
+        <label class="seg-opt" style="flex:1"><input type="radio" name="lvl" defaultChecked>Beginner</label>
+        <label class="seg-opt" style="flex:1"><input type="radio" name="lvl">Interm.</label>
+        <label class="seg-opt" style="flex:1"><input type="radio" name="lvl">Adv.</label>
+      </div>
+    </div>
+    <div class="field"><label>What would you like Tolu to get better at?</label><textarea class="input" defaultValue="Speaks well at home but goes quiet in class. We want her to read aloud with confidence."></textarea></div>
+    <div class="field"><label>Has Tolu taken a class with us before?</label><select class="input" style="min-height:44px"><option>No, this is the first time</option><option>Yes, a past cohort</option></select></div>
+    <button class="btn btn-secondary btn-block" style="min-height:44px" onClick="{{ addChild }}">Add another child</button>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:8px"><button class="btn btn-secondary" style="min-height:48px" onClick="{{ back }}">Back</button><button class="btn btn-primary" style="min-height:48px;justify-content:flex-start;font-size:15px" onClick="{{ next }}">Continue</button></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ st.s3 }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:20px 16px;display:flex;flex-direction:column;gap:12px">
+    <div><h2 style="font-size:28px;margin:0 0 6px">Choose a plan</h2><p style="margin:0;font-size:14px;color:var(--color-neutral-800)">Every plan includes two live Zoom classes (Sat and Sun, 5–6 pm WAT), two tasks and private feedback each week.</p></div>
+    <sc-for list="{{ plans }}" as="pl" hint-placeholder-count="3">
+      <button onClick="{{ pl.onClick }}" style="text-align:left;cursor:pointer;background:{{ pl.bg }};border:2px solid {{ pl.bd }};padding:14px;display:grid;grid-template-columns:20px 1fr auto;gap:4px 12px;align-items:start">
+        <div style="width:18px;height:18px;border-radius:50%;border:2px solid {{ pl.bd }};background:{{ pl.dot }};margin-top:2px;box-shadow:inset 0 0 0 3px var(--color-bg)"></div>
+        <div style="font-weight:800;font-size:16px">{{ pl.name }}</div>
+        <div style="font-weight:800;font-size:16px">{{ pl.price }}</div>
+        <div></div><div style="font-size:13px;color:var(--color-neutral-800);grid-column:2 / -1">{{ pl.sub }}</div>
+      </button>
+    </sc-for>
+    <div style="font-size:13px;color:var(--color-neutral-700);border-top:1px solid var(--color-divider);padding-top:10px">Plans run for 12 months. We’ll remind you 7 days, 3 days and on the day before it ends.</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:8px"><button class="btn btn-secondary" style="min-height:48px" onClick="{{ back }}">Back</button><button class="btn btn-primary" style="min-height:48px;justify-content:flex-start;font-size:15px" onClick="{{ next }}">Continue to payment</button></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ st.s4 }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:20px 16px;display:flex;flex-direction:column;gap:14px">
+    <h2 style="font-size:28px;margin:0">Pay</h2>
+    <div style="border-top:2px solid var(--color-text)">
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--color-divider);font-size:14px"><span style="color:var(--color-neutral-700)">Learner</span><span>Tolu, 8 · Beginner</span></div>
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--color-divider);font-size:14px"><span style="color:var(--color-neutral-700)">Plan</span><span>{{ planSel.name }}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:2px solid var(--color-divider);font-size:16px;font-weight:800"><span>Due today</span><span>{{ planSel.due }}</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider)">
+      <button onClick="{{ onPayCard }}" style="min-height:44px;border:0;cursor:pointer;font-size:14px;font-weight:600;text-align:left;padding:0 12px;background:{{ pm.cardBg }};color:{{ pm.cardFg }}">Card · Paystack</button>
+      <button onClick="{{ onPayBank }}" style="min-height:44px;border:0;border-left:1px solid var(--color-divider);cursor:pointer;font-size:14px;font-weight:600;text-align:left;padding:0 12px;background:{{ pm.bankBg }};color:{{ pm.bankFg }}">Bank transfer</button>
+    </div>
+    <sc-if value="{{ pm.card }}" hint-placeholder-val="{{ true }}">
+      <div style="font-size:14px;color:var(--color-neutral-800);background:var(--color-surface);padding:14px">Pay by card, bank app or USSD in Paystack’s secure checkout. Your payment is confirmed straight away — no receipt to send.</div>
+    </sc-if>
+    <sc-if value="{{ pm.bank }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--color-surface);padding:14px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px">
+        <span style="color:var(--color-neutral-700)">Bank</span><span>GTBank</span>
+        <span style="color:var(--color-neutral-700)">Account</span><span style="font-weight:800">0123 456 789</span>
+        <span style="color:var(--color-neutral-700)">Name</span><span>Flying Colours Kiddies Ltd</span>
+        <span style="color:var(--color-neutral-700)">Reference</span><span style="font-weight:800;color:var(--color-accent-700)">FC-TOLU-4471</span>
+      </div>
+      <button onClick="{{ addChild }}" style="border:2px dashed var(--color-divider);background:transparent;min-height:72px;cursor:pointer;text-align:left;padding:12px 14px;font-size:14px"><div style="font-weight:800">Upload your receipt</div><div style="font-size:12px;color:var(--color-neutral-700)">Screenshot or PDF. We confirm within 24 hours.</div></button>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:8px"><button class="btn btn-secondary" style="min-height:48px" onClick="{{ back }}">Back</button><button class="btn btn-primary" style="min-height:48px;justify-content:flex-start;font-size:15px" onClick="{{ onPay }}">{{ payLabel }}</button></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ st.s5 }}" hint-placeholder-val="{{ false }}">
+  <div style="background:var(--color-accent);color:#fff;padding:28px 16px">
+    <div style="width:52px;height:52px;background:#fff;display:grid;place-items:center;margin-bottom:16px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+    <h1 style="font-size:34px;margin:0 0 8px;color:#fff">{{ done.head }}</h1>
+    <p style="margin:0;font-size:15px">{{ done.sub }}</p>
+  </div>
+  <div style="padding:8px 16px 20px">
+    <div style="display:grid;grid-template-columns:36px 1fr;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--color-divider)"><div style="font:800 22px/1 var(--font-heading)">1</div><div><div style="font-weight:800">We place Tolu in a class</div><div style="font-size:13px;color:var(--color-neutral-700)">Matched to age 8 · Beginner, usually within 48 hours.</div></div></div>
+    <div style="display:grid;grid-template-columns:36px 1fr;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--color-divider)"><div style="font:800 22px/1 var(--font-heading)">2</div><div><div style="font-weight:800">You get a welcome guide on WhatsApp</div><div style="font-size:13px;color:var(--color-neutral-700)">Class page, Zoom link, timetable and how to submit tasks.</div></div></div>
+    <div style="display:grid;grid-template-columns:36px 1fr;gap:4px 12px;padding:14px 0;border-bottom:2px solid var(--color-divider)"><div style="font:800 22px/1 var(--font-heading)">3</div><div><div style="font-weight:800">First class: Sat 10 Oct, 5 pm WAT</div><div style="font-size:13px;color:var(--color-neutral-700)">New learners join on the next cohort start date.</div></div></div>
+    <button class="btn btn-primary btn-block" style="min-height:48px;margin-top:16px" onClick="{{ toParentHome }}">Go to my dashboard</button>
+    <button class="btn btn-ghost" style="margin-top:8px" onClick="{{ restart }}">Restart sign-up demo</button>
+  </div>
+  </sc-if>
+</div></div>
+</sc-if>
+
+
+<sc-if value="{{ on.l_home }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md)">
+  <div style="background:var(--color-accent);color:#fff;padding:18px 16px 0">
+    <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:13px;font-weight:600">Starlight Readers</div><div style="width:40px;height:40px;background:#fff;color:var(--color-accent);display:grid;place-items:center;font:800 20px/1 var(--font-heading)">T</div></div>
+    <div style="font:800 64px/0.9 var(--font-heading);letter-spacing:-.03em;margin:14px 0 6px">Hi Tolu!</div>
+    <div style="font-size:16px;font-weight:600;margin-bottom:16px">Wednesday · here’s your week</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid #fff;margin:0 -16px">
+      <div style="padding:8px 6px;font-size:12px;font-weight:600;border-right:1px solid var(--color-accent-400)">M<div style="font-size:18px">✓</div></div>
+      <div style="padding:8px 6px;font-size:12px;font-weight:600;border-right:1px solid var(--color-accent-400)">T<div style="font-size:18px">✓</div></div>
+      <div style="padding:8px 6px;font-size:12px;font-weight:800;background:#fff;color:var(--color-accent)">W<div style="font-size:18px">●</div></div>
+      <div style="padding:8px 6px;font-size:12px;font-weight:600;border-right:1px solid var(--color-accent-400)">T</div>
+      <div style="padding:8px 6px;font-size:12px;font-weight:600;border-right:1px solid var(--color-accent-400)">F</div>
+      <div style="padding:8px 6px;font-size:12px;font-weight:600;border-right:1px solid var(--color-accent-400)">S<div style="font-size:11px">Live</div></div>
+      <div style="padding:8px 6px;font-size:12px;font-weight:600">S<div style="font-size:11px">Live</div></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:72px 1fr;border-bottom:2px solid var(--color-divider)">
+    <div style="font:800 72px/1 var(--font-heading);color:var(--color-accent);padding:14px 0 0 14px">1</div>
+    <div style="padding:18px 16px 18px 4px">
+      <div style="font-size:13px;font-weight:600;color:var(--color-accent-700);text-transform:uppercase;letter-spacing:.08em">New feedback</div>
+      <h3 style="font-size:24px;margin:4px 0 12px">Ms Adaeze listened to your food video</h3>
+      <button onClick="{{ onPlay }}" style="display:flex;align-items:center;gap:12px;width:100%;background:var(--color-text);color:#fff;border:0;padding:10px;cursor:pointer;text-align:left">
+        <div style="width:48px;height:48px;background:var(--color-accent);display:grid;place-items:center;flex:none">
+          <sc-if value="{{ L.paused }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="7 4 20 12 7 20 7 4"></polygon></svg></sc-if>
+          <sc-if value="{{ L.playing }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg></sc-if>
+        </div>
+        <div style="flex:1"><div style="font-weight:800;font-size:16px">Voice note · 0:48</div><div style="display:flex;gap:2px;align-items:center;height:18px;margin-top:6px"><div style="width:3px;height:8px;background:var(--color-accent-400)"></div><div style="width:3px;height:14px;background:var(--color-accent-400)"></div><div style="width:3px;height:10px;background:var(--color-accent-400)"></div><div style="width:3px;height:18px;background:var(--color-neutral-500)"></div><div style="width:3px;height:12px;background:var(--color-neutral-500)"></div><div style="width:3px;height:6px;background:var(--color-neutral-500)"></div><div style="width:3px;height:16px;background:var(--color-neutral-500)"></div><div style="width:3px;height:10px;background:var(--color-neutral-500)"></div><div style="width:3px;height:14px;background:var(--color-neutral-500)"></div><div style="width:3px;height:8px;background:var(--color-neutral-500)"></div><div style="width:3px;height:12px;background:var(--color-neutral-500)"></div><div style="width:3px;height:6px;background:var(--color-neutral-500)"></div></div></div>
+      </button>
+      <p style="font-size:16px;line-height:1.45;margin:12px 0">“Great describing words — <b>crunchy</b> and <b>spicy</b>! Next time, say ‘I <b>ate</b>’, not ‘I eated’.”</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><span style="background:var(--color-accent-100);color:var(--color-accent-800);padding:4px 10px;font-size:14px;font-weight:600">Speaking ★★★★</span><span style="background:var(--color-accent-100);color:var(--color-accent-800);padding:4px 10px;font-size:14px;font-weight:600">Grammar ★★★</span></div>
+      <sc-if value="{{ L.unseen }}" hint-placeholder-val="{{ true }}"><button onClick="{{ onSeen }}" class="btn btn-primary btn-block" style="min-height:56px;font-size:17px">I’ve listened</button></sc-if>
+      <sc-if value="{{ L.seen }}" hint-placeholder-val="{{ false }}"><div style="font-size:15px;font-weight:600;color:var(--color-accent-700)">✓ Listened — well done!</div></sc-if>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:72px 1fr;border-bottom:2px solid var(--color-divider)">
+    <div style="font:800 72px/1 var(--font-heading);color:var(--color-text);padding:14px 0 0 14px">2</div>
+    <div style="padding:18px 16px 18px 4px">
+      <div style="font-size:13px;font-weight:600;color:var(--color-neutral-700);text-transform:uppercase;letter-spacing:.08em">Wednesday task · video</div>
+      <h3 style="font-size:24px;margin:4px 0 6px">Kola and the Kite: tell the story your way</h3>
+      <div style="font-size:15px;color:var(--color-neutral-800);margin-bottom:12px">Due Thu 1 Oct, 3 pm · 29 hours left</div>
+      <sc-if value="{{ L.locked }}" hint-placeholder-val="{{ true }}"><div style="min-height:56px;background:var(--color-surface);display:flex;align-items:center;padding:0 16px;font-size:15px;font-weight:600;color:var(--color-neutral-700)">Listen to your feedback first</div></sc-if>
+      <sc-if value="{{ L.open }}" hint-placeholder-val="{{ false }}"><button onClick="{{ onStartTask }}" class="btn btn-block" style="min-height:56px;font-size:17px;background:var(--color-text);color:#fff">Start task →</button></sc-if>
+      <sc-if value="{{ L.done }}" hint-placeholder-val="{{ false }}"><div style="min-height:56px;background:var(--color-text);color:#fff;display:flex;align-items:center;padding:0 16px;font-size:16px;font-weight:800">✓ Sent! Feedback on Friday</div></sc-if>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr">
+    <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font-size:13px;color:var(--color-neutral-700)">Live class</div><div style="font-weight:800;font-size:22px;margin-top:2px">Sat · 5 pm</div><button class="btn btn-secondary" style="min-height:48px;margin-top:10px;width:100%;justify-content:flex-start" onClick="{{ recToast }}">Join Zoom</button></div>
+    <div style="padding:16px"><div style="font-size:13px;color:var(--color-neutral-700)">Watch again</div><div style="font-weight:800;font-size:22px;margin-top:2px">Sunday’s class</div><button class="btn btn-secondary" style="min-height:48px;margin-top:10px;width:100%;justify-content:flex-start" onClick="{{ recToast }}">Play</button></div>
+  </div>
+  <div style="padding:12px 16px;border-top:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:center;gap:8px"><div style="font-size:12px;color:var(--color-neutral-700)">Only you, your parent and Ms Adaeze see your videos.</div><button class="btn btn-ghost" onClick="{{ onResetLearner }}">Reset demo</button></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.l_task }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md);min-height:760px;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:2px solid var(--color-divider)"><button class="btn btn-secondary" style="min-height:44px" onClick="{{ toLearnerHome }}">← This week</button><div style="margin-left:auto;font-size:13px;font-weight:600;color:var(--color-accent-700)">29 h left</div></div>
+  <sc-if value="{{ L.sent }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;background:var(--color-accent);color:#fff;padding:32px 16px;display:flex;flex-direction:column">
+      <div style="width:72px;height:72px;background:#fff;display:grid;place-items:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div style="font:800 88px/0.9 var(--font-heading);letter-spacing:-.04em;margin:24px 0 12px">Sent!</div>
+      <p style="font-size:19px;line-height:1.4;margin:0 0 8px">Ms Adaeze will send your feedback on Friday.</p>
+      <p style="font-size:15px;margin:0">Your mum got a message too. Nobody else in class can see your video.</p>
+      <button class="btn btn-block" style="margin-top:auto;min-height:56px;background:#fff;color:var(--color-text);font-size:17px" onClick="{{ toLearnerHome }}">Back to my week</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ L.open }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:16px">
+    <div style="font-size:13px;font-weight:600;color:var(--color-neutral-700);text-transform:uppercase;letter-spacing:.08em">Wednesday task · answer with a video</div>
+    <h2 style="font-size:30px;margin:4px 0 10px">Kola and the Kite</h2>
+    <div style="display:grid;grid-template-columns:28px 1fr;gap:6px 8px;font-size:16px;line-height:1.4;margin-bottom:12px">
+      <b style="color:var(--color-accent)">1</b><span>Read the story sheet with a grown-up.</span>
+      <b style="color:var(--color-accent)">2</b><span>Tell the story in your own words.</span>
+      <b style="color:var(--color-accent)">3</b><span>Say what you would do if you were Kola.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px"><button class="btn btn-secondary" style="min-height:44px;justify-content:flex-start" onClick="{{ addChild }}">Story sheet</button><button class="btn btn-secondary" style="min-height:44px;justify-content:flex-start" onClick="{{ addChild }}">Example · 0:40</button></div>
+  </div>
+  <div style="padding:0 16px 16px">
+    <sc-if value="{{ L.idle }}" hint-placeholder-val="{{ true }}">
+      <div style="aspect-ratio:4 / 5;background:var(--color-neutral-900);color:var(--color-neutral-400);display:flex;align-items:flex-end;padding:14px;font-size:13px">Camera preview · front camera</div>
+      <button onClick="{{ onRecord }}" class="btn btn-primary btn-block" style="min-height:64px;font-size:19px;gap:12px"><span style="width:18px;height:18px;border-radius:50%;background:#fff"></span>Start recording</button>
+      <div style="font-size:14px;color:var(--color-neutral-700);margin-top:8px">Up to 2 minutes. You can record again before you send.</div>
+    </sc-if>
+    <sc-if value="{{ L.rec }}" hint-placeholder-val="{{ false }}">
+      <div style="aspect-ratio:4 / 5;background:var(--color-neutral-900);border:6px solid var(--color-accent);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:14px">
+        <div style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px"><span style="width:14px;height:14px;border-radius:50%;background:var(--color-accent)"></span>REC {{ secsLabel }} <span style="font-weight:400;color:var(--color-neutral-400);font-size:14px">/ 2:00</span></div>
+        <div style="font-size:13px;color:var(--color-neutral-400)">Camera preview</div>
+      </div>
+      <button onClick="{{ onStop }}" class="btn btn-block" style="min-height:64px;font-size:19px;background:var(--color-text);color:#fff;gap:12px"><span style="width:18px;height:18px;background:var(--color-accent)"></span>Stop</button>
+    </sc-if>
+    <sc-if value="{{ L.review }}" hint-placeholder-val="{{ false }}">
+      <div style="aspect-ratio:4 / 5;background:var(--color-neutral-800);color:#fff;display:grid;place-items:center;position:relative"><div style="width:72px;height:72px;background:var(--color-accent);display:grid;place-items:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><polygon points="7 4 20 12 7 20 7 4"></polygon></svg></div><div style="position:absolute;left:14px;bottom:12px;font-size:14px;font-weight:600">Your video · {{ secsLabel }}</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:8px;margin-top:8px">
+        <button onClick="{{ onRedo }}" class="btn btn-secondary" style="min-height:64px;font-size:16px;justify-content:flex-start">Record again</button>
+        <button onClick="{{ onSend }}" class="btn btn-primary" style="min-height:64px;font-size:17px;justify-content:flex-start">Send to Ms Adaeze</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ L.up }}" hint-placeholder-val="{{ false }}">
+      <div style="aspect-ratio:4 / 5;background:var(--color-surface);display:flex;flex-direction:column;justify-content:flex-end;padding:16px">
+        <div style="font:800 72px/1 var(--font-heading);color:var(--color-accent)">{{ pctN }}%</div>
+        <div style="font-size:18px;font-weight:800;margin:6px 0 12px">Sending your video…</div>
+        <div style="height:14px;background:var(--color-neutral-300)"><div style="height:14px;background:var(--color-accent);width:{{ pctW }}"></div></div>
+        <div style="font-size:14px;color:var(--color-neutral-800);margin-top:12px">Keep this page open. If the internet drops, we carry on from where we stopped.</div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+  <sc-if value="{{ L.locked }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:24px 16px"><h2 style="font-size:28px">Listen to your feedback first</h2><p style="font-size:16px">Ms Adaeze left you a voice note. Listen to it, then this task opens.</p><button class="btn btn-primary btn-block" style="min-height:56px;font-size:17px" onClick="{{ toLearnerHome }}">Go to my feedback</button></div>
+  </sc-if>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.t_home }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Ms Adaeze · my classes</div>
+    <div style="padding:10px 18px;background:var(--color-text);color:#fff;font-weight:600;font-size:14px;display:flex;justify-content:space-between">Starlight Readers<span style="color:var(--color-accent-400)">{{ tstats.todo }}</span></div>
+    <button onClick="{{ addChild }}" style="width:100%;border:0;background:transparent;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between">Little Voices<span style="color:var(--color-accent-700)">4</span></button>
+    <button onClick="{{ addChild }}" style="width:100%;border:0;background:transparent;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between">Word Explorers<span style="color:var(--color-neutral-700)">0</span></button>
+    <div style="padding:20px 18px 6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Starlight Readers</div>
+    <div style="padding:8px 18px;font-size:14px;font-weight:600;color:var(--color-accent-700)">This week</div>
+    <button onClick="{{ toSession }}" style="width:100%;border:0;background:transparent;cursor:pointer;padding:8px 18px;font-size:14px;text-align:left">Attendance</button>
+    <button onClick="{{ toTask }}" style="width:100%;border:0;background:transparent;cursor:pointer;padding:8px 18px;font-size:14px;text-align:left">Tasks</button>
+    <button onClick="{{ addChild }}" style="width:100%;border:0;background:transparent;cursor:pointer;padding:8px 18px;font-size:14px;text-align:left">Learners · 17</button>
+  </div>
+  <div style="min-width:0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:22px 28px 18px;border-bottom:2px solid var(--color-divider)">
+      <div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Tuesday 29 Sep · correction day · week 14</div><h2 style="margin:4px 0 0">Starlight Readers</h2><div style="font-size:14px;color:var(--color-neutral-700)">Ages 7–9 · Beginner · 17 learners · Zoom Sat &amp; Sun 5 pm</div></div>
+      <div style="display:flex;gap:32px">
+        <div><div style="font:800 32px/1 var(--font-heading)">{{ tstats.todo }}</div><div style="font-size:12px;color:var(--color-neutral-700)">to review</div></div>
+        <div><div style="font:800 32px/1 var(--font-heading)">{{ tstats.rev }}</div><div style="font-size:12px;color:var(--color-neutral-700)">reviewed</div></div>
+        <div><div style="font:800 32px/1 var(--font-heading);color:var(--color-accent)">{{ tstats.miss }}</div><div style="font-size:12px;color:var(--color-neutral-700)">missing</div></div>
+        <div><div style="font:800 32px/1 var(--font-heading)">6 pm</div><div style="font-size:12px;color:var(--color-neutral-700)">feedback release</div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-bottom:2px solid var(--color-divider)">
+      <div style="padding:12px 14px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">SAT 26</div><div style="font-weight:800;font-size:14px">Live class</div><div style="font-size:12px;color:var(--color-neutral-700)">16/17 present · ✓ rec</div></div>
+      <div style="padding:12px 14px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">SUN 27</div><div style="font-weight:800;font-size:14px">Live class</div><div style="font-size:12px;color:var(--color-accent-700)">2 absent · follow-up sent</div></div>
+      <div style="padding:12px 14px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">MON 28</div><div style="font-weight:800;font-size:14px">Task released</div><div style="font-size:12px;color:var(--color-neutral-700)">My favourite food</div></div>
+      <div style="padding:12px 14px;border-right:1px solid var(--color-divider);background:var(--color-accent);color:#fff"><div style="font-size:11px">TUE 29 · TODAY</div><div style="font-weight:800;font-size:14px">Corrections</div><div style="font-size:12px">{{ tstats.rev }} of {{ tstats.sub }} done</div></div>
+      <div style="padding:12px 14px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">WED 30</div><div style="font-weight:800;font-size:14px">Task scheduled</div><div style="font-size:12px;color:var(--color-neutral-700)">Kola and the Kite · 9 am</div></div>
+      <div style="padding:12px 14px;border-right:1px solid var(--color-divider)"><div style="font-size:11px;color:var(--color-neutral-700)">THU 1</div><div style="font-size:12px;color:var(--color-neutral-700)">Deadline 3 pm</div></div>
+      <div style="padding:12px 14px"><div style="font-size:11px;color:var(--color-neutral-700)">FRI 2</div><div style="font-weight:800;font-size:14px">Corrections</div></div>
+    </div>
+    <div style="padding:18px 28px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+        <div style="display:flex;border:1px solid var(--color-divider)">
+          <sc-for list="{{ qtabs }}" as="q" hint-placeholder-count="4"><button onClick="{{ q.onClick }}" style="border:0;border-right:1px solid var(--color-divider);padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;background:{{ q.bg }};color:{{ q.fg }}">{{ q.label }}</button></sc-for>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center"><div style="font-size:13px;color:var(--color-neutral-700)">Task: My favourite food · video · due Tue 3 pm</div><button class="btn btn-secondary" onClick="{{ addChild }}">Class correction note</button></div>
+      </div>
+      <table class="table">
+        <thead><tr><th>Learner</th><th>Submitted</th><th>Length</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <sc-for list="{{ qrows }}" as="r" hint-placeholder-count="8">
+            <tr style="background:{{ r.rowBg }}">
+              <td><div style="font-weight:600">{{ r.name }}</div><div style="font-size:12px;color:var(--color-neutral-700)">Age {{ r.age }}</div></td>
+              <td>{{ r.at }}</td>
+              <td>{{ r.dur }}</td>
+              <td><span class="tag" style="background:{{ r.tb }};color:{{ r.tf }}">{{ r.stt }}</span></td>
+              <td style="text-align:right"><button onClick="{{ r.onClick }}" class="btn" style="border:1px solid var(--color-divider);background:{{ r.abg }};color:{{ r.afg }};min-width:120px;justify-content:flex-start">{{ r.action }}</button></td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.t_feedback }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;gap:16px;padding:12px 20px;border-bottom:2px solid var(--color-divider);flex-wrap:wrap">
+    <button class="btn btn-secondary" onClick="{{ toQueue }}">← Review queue</button>
+    <div style="font-weight:800">Starlight Readers · My favourite food</div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-neutral-700)">{{ tstats.rev }} of {{ tstats.sub }} reviewed<div style="width:160px;height:8px;background:var(--color-neutral-300)"><div style="height:8px;background:var(--color-accent);width:{{ tstats.pct }}"></div></div></div>
+  </div>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+    <div style="border-right:2px solid var(--color-divider)">
+      <sc-for list="{{ fbList }}" as="f" hint-placeholder-count="9">
+        <button onClick="{{ f.onClick }}" style="width:100%;border:0;border-bottom:1px solid var(--color-divider);background:{{ f.bg }};color:{{ f.fg }};text-align:left;padding:10px 16px;cursor:pointer;display:flex;justify-content:space-between;gap:8px;align-items:center">
+          <div><div style="font-weight:600;font-size:14px">{{ f.name }}</div><div style="font-size:12px;color:{{ f.sub2 }}">{{ f.at }}</div></div>
+          <span class="tag" style="background:{{ f.tb }};color:{{ f.tf }};font-size:10px">{{ f.stt }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="padding:20px 24px;min-width:0;border-right:2px solid var(--color-divider)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><h3 style="margin:0">{{ cur.name }}</h3><div style="font-size:13px;color:var(--color-neutral-700)">Age {{ cur.age }} · submitted {{ cur.at }}</div></div>
+      <sc-if value="{{ cur.late }}" hint-placeholder-val="{{ false }}"><div style="margin-top:8px;font-size:13px;font-weight:600;color:var(--color-accent-700)">Late · 1 h 10 min after the deadline</div></sc-if>
+      <div style="margin-top:14px;aspect-ratio:16 / 9;max-height:420px;background:var(--color-neutral-900);color:var(--color-neutral-400);display:flex;flex-direction:column;justify-content:space-between;padding:14px">
+        <div style="font-size:12px">Private · signed link expires in 15 min</div>
+        <div style="display:flex;align-items:center;gap:12px;color:#fff"><div style="width:44px;height:44px;background:var(--color-accent);display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="7 4 20 12 7 20 7 4"></polygon></svg></div><div style="flex:1;height:4px;background:var(--color-neutral-700)"><div style="width:30%;height:4px;background:#fff"></div></div><div style="font-size:13px">0:21 / {{ cur.dur }}</div><div style="font-size:13px;border:1px solid var(--color-neutral-600);padding:2px 6px">1.5×</div></div>
+      </div>
+      <div style="margin-top:20px;border-top:2px solid var(--color-text);padding-top:12px">
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">{{ cur.first }}’s timeline · for handover</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:13px;padding:8px 0;border-bottom:1px solid var(--color-divider)"><span style="color:var(--color-neutral-700)">Fri 25 Sep</span><span>“Clear voice. Watch past tense: goed → went.”</span><span class="tag tag-accent">Grammar 3</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:13px;padding:8px 0;border-bottom:1px solid var(--color-divider)"><span style="color:var(--color-neutral-700)">Tue 22 Sep</span><span>“Lovely expression when reading the poem.”</span><span class="tag tag-accent">Fluency 4</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:13px;padding:8px 0;border-bottom:1px solid var(--color-divider)"><span style="color:var(--color-neutral-700)">Attendance</span><span>7 of last 8 live classes · 1 late submission this term</span><span></span></div>
+      </div>
+    </div>
+    <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Rubric</div>
+        <sc-for list="{{ skills }}" as="k" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--color-divider)">
+            <div style="font-size:14px;font-weight:600">{{ k.label }}</div>
+            <div style="display:flex;gap:3px"><sc-for list="{{ k.dots }}" as="d" hint-placeholder-count="5"><button onClick="{{ d.onClick }}" style="width:30px;height:30px;border:1px solid var(--color-divider);cursor:pointer;font-size:12px;font-weight:600;background:{{ d.bg }};color:{{ d.fg }}">{{ d.n }}</button></sc-for></div>
+          </div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Focus tags</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ tags }}" as="g" hint-placeholder-count="6"><button onClick="{{ g.onClick }}" style="border:1px solid var(--color-divider);padding:5px 10px;font-size:13px;cursor:pointer;background:{{ g.bg }};color:{{ g.fg }}">{{ g.label }}</button></sc-for></div>
+      </div>
+      <div class="field"><label>Written feedback for {{ cur.first }} and parent</label><textarea class="input" style="min-height:110px" placeholder="What went well, and one thing to try next time…"></textarea></div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center">
+        <button onClick="{{ onVnote }}" class="btn" style="min-height:44px;background:var(--color-accent-100);color:var(--color-accent-800);gap:8px"><span style="width:12px;height:12px;border-radius:50%;background:var(--color-accent)"></span>Voice note</button>
+        <div style="font-size:13px;color:var(--color-neutral-700)">
+          <sc-if value="{{ vn.idle }}" hint-placeholder-val="{{ true }}">Tap to record — up to 2 min</sc-if>
+          <sc-if value="{{ vn.rec }}" hint-placeholder-val="{{ false }}"><span style="color:var(--color-accent-700);font-weight:600">● Recording… tap to stop</span></sc-if>
+          <sc-if value="{{ vn.done }}" hint-placeholder-val="{{ false }}"><span style="font-weight:600;color:var(--color-text)">✓ Voice note · 0:38 attached</span></sc-if>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Release</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider)"><sc-for list="{{ rel }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.onClick }}" style="border:0;min-height:40px;padding:0 10px;font-size:13px;font-weight:600;text-align:left;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div>
+      </div>
+      <button onClick="{{ onSaveNext }}" class="btn btn-primary btn-block" style="min-height:52px;font-size:15px;margin-top:auto">Save and next learner →</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_home }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="8"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider)"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Tuesday 29 Sep · week 14</div><h2 style="margin:4px 0 0">Good afternoon, Hassan</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-bottom:2px solid var(--color-divider)">
+      <div style="padding:18px 20px;border-right:1px solid var(--color-divider)"><div style="font:800 40px/1 var(--font-heading)">612</div><div style="font-size:13px;margin-top:6px">Active learners</div><div style="font-size:12px;color:var(--color-neutral-700)">+14 this week</div></div>
+      <div style="padding:18px 20px;border-right:1px solid var(--color-divider)"><div style="font:800 40px/1 var(--font-heading)">84%</div><div style="font-size:13px;margin-top:6px">Class fill</div><div style="font-size:12px;color:var(--color-neutral-700)">31 classes · 3 full</div></div>
+      <div style="padding:18px 20px;border-right:1px solid var(--color-divider)"><div style="font:800 40px/1 var(--font-heading)">91%</div><div style="font-size:13px;margin-top:6px">Weekend attendance</div><div style="font-size:12px;color:var(--color-neutral-700)">54 absent · all followed up</div></div>
+      <div style="padding:18px 20px;border-right:1px solid var(--color-divider)"><div style="font:800 40px/1 var(--font-heading)">88%</div><div style="font-size:13px;margin-top:6px">Feedback on time</div><div style="font-size:12px;color:var(--color-accent-700)">Target 90%</div></div>
+      <div style="padding:18px 20px"><div style="font:800 40px/1 var(--font-heading)">79%</div><div style="font-size:13px;margin-top:6px">Tasks submitted</div><div style="font-size:12px;color:var(--color-neutral-700)">Monday’s task</div></div>
+    </div>
+    <div style="padding:18px 28px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Needs action</div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-divider);margin:0 28px">
+      <div style="padding:18px 18px 18px 0;border-right:1px solid var(--color-divider)"><div style="font:800 48px/1 var(--font-heading);color:var(--color-accent)">{{ counts.pay }}</div><div style="font-weight:800;font-size:16px;margin-top:6px">Bank transfers to approve</div><div style="font-size:13px;color:var(--color-neutral-700);margin-bottom:12px">12 card payments auto-verified today. 1 reversal flagged.</div><button class="btn btn-secondary" onClick="{{ goPay }}">Open payment queue</button></div>
+      <div style="padding:18px;border-right:1px solid var(--color-divider)"><div style="font:800 48px/1 var(--font-heading);color:var(--color-accent)">{{ counts.place }}</div><div style="font-weight:800;font-size:16px;margin-top:6px">Paid learners to place</div><div style="font-size:13px;color:var(--color-neutral-700);margin-bottom:12px">Next cohort starts Sat 10 Oct. Oldest waiting 3 days.</div><button class="btn btn-secondary" onClick="{{ goPlace }}">Open placement queue</button></div>
+      <div style="padding:18px"><div style="font:800 48px/1 var(--font-heading);color:var(--color-accent)">{{ counts.ren }}</div><div style="font-weight:800;font-size:16px;margin-top:6px">Renewals to follow up</div><div style="font-size:13px;color:var(--color-neutral-700);margin-bottom:12px">Expiring in 7 days, expired, or in arrears.</div><button class="btn btn-secondary" onClick="{{ goRen }}">Open renewals</button></div>
+    </div>
+    <div style="padding:22px 28px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h4 style="margin:0 0 8px">Classes this week</h4><button class="btn btn-ghost" onClick="{{ exportToast }}">Export report</button></div>
+      <table class="table">
+        <thead><tr><th>Class</th><th>Band</th><th>Tutor</th><th>Fill</th><th>Attendance</th><th>Submitted</th><th>Feedback</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Starlight Readers</td><td>7–9 · Beginner</td><td>Ms Adaeze</td><td>17 / 20</td><td>91%</td><td>75%</td><td>{{ tstats.rev }} of {{ tstats.sub }}</td></tr>
+          <tr><td style="font-weight:600">Word Explorers</td><td>7–9 · Beginner</td><td>Ms Ruth</td><td style="color:var(--color-accent-700);font-weight:600">20 / 20 full</td><td>95%</td><td>85%</td><td>17 of 17</td></tr>
+          <tr><td style="font-weight:600">Little Voices</td><td>5–6 · Starter</td><td>Mr Segun</td><td>18 / 20</td><td>83%</td><td>61%</td><td>7 of 11</td></tr>
+          <tr><td style="font-weight:600">Bold Speakers</td><td>10–12 · Intermediate</td><td>Mr Tunde</td><td>15 / 20</td><td>93%</td><td>87%</td><td>13 of 13</td></tr>
+          <tr><td style="font-weight:600">Young Authors</td><td>10–13 · Advanced</td><td>Ms Ruth</td><td>12 / 16</td><td>100%</td><td>92%</td><td>9 of 11</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_placement }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="8"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0;display:flex;flex-direction:column">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider)"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Next cohort · Sat 10 Oct</div><h2 style="margin:4px 0 0">Placement queue · {{ counts.place }} waiting</h2></div>
+    <div style="flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)">
+      <div style="border-right:2px solid var(--color-divider)">
+        <sc-for list="{{ pqRows }}" as="p" hint-placeholder-count="6">
+          <button onClick="{{ p.onClick }}" style="width:100%;border:0;border-bottom:1px solid var(--color-divider);border-left:4px solid {{ p.bl }};background:{{ p.bg }};text-align:left;cursor:pointer;padding:12px 20px;display:grid;grid-template-columns:1fr auto;gap:2px 12px">
+            <div style="font-weight:800;font-size:15px">{{ p.name }}</div>
+            <div style="font-size:12px;color:var(--color-neutral-700)">Waiting {{ p.wait }}</div>
+            <div style="font-size:13px;color:var(--color-neutral-800)">Age {{ p.age }} · {{ p.level }} · {{ p.paid }}</div>
+            <div><sc-if value="{{ p.isPlaced }}" hint-placeholder-val="{{ false }}"><span class="tag" style="background:var(--color-text);color:var(--color-bg)">{{ p.placedTo }}</span></sc-if></div>
+          </button>
+        </sc-for>
+      </div>
+      <div style="padding:22px 28px">
+        <h3 style="margin:0">{{ sp.name }}</h3>
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:6px 16px;font-size:14px;margin:12px 0 20px;border-top:2px solid var(--color-text);padding-top:12px">
+          <span style="color:var(--color-neutral-700)">Age · level</span><span>{{ sp.age }} · {{ sp.level }}</span>
+          <span style="color:var(--color-neutral-700)">Guardian</span><span>{{ sp.parent }}</span>
+          <span style="color:var(--color-neutral-700)">Payment</span><span>{{ sp.paid }} · verified</span>
+          <span style="color:var(--color-neutral-700)">Goals</span><span>{{ sp.goals }}</span>
+        </div>
+        <sc-if value="{{ spPlaced }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-text);color:var(--color-bg);padding:18px;display:flex;justify-content:space-between;align-items:center;gap:12px"><div><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-400)">Placed</div><div style="font-weight:800;font-size:18px">{{ spPlacedTo }}</div><div style="font-size:13px;color:var(--color-neutral-400)">Tutor and parent notified · welcome guide sent</div></div><button class="btn" style="border:1px solid var(--color-neutral-600);color:var(--color-bg)" onClick="{{ onUnplace }}">Undo</button></div>
+        </sc-if>
+        <sc-if value="{{ spOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Suggested classes</div>
+          <sc-for list="{{ sugg }}" as="c" hint-placeholder-count="2">
+            <div style="border:2px solid var(--color-divider);padding:16px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+              <div style="flex:1 1 280px;min-width:0">
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div style="font-weight:800;font-size:17px;white-space:nowrap">{{ c.name }}</div><sc-if value="{{ c.best }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent">Best match</span></sc-if></div>
+                <div style="font-size:13px;color:var(--color-neutral-800);margin:2px 0 10px">{{ c.band }} · {{ c.tutor }} · starts {{ c.cohort }} · {{ c.why }}</div>
+                <div style="display:flex;align-items:center;gap:10px"><div style="flex:1;max-width:240px;height:8px;background:var(--color-neutral-300)"><div style="height:8px;background:var(--color-text);width:{{ c.pct }}"></div></div><div style="font-size:13px;font-weight:600">{{ c.f }} / {{ c.cap }} · {{ c.seatLabel }}</div></div>
+              </div>
+              <sc-if value="{{ c.open }}" hint-placeholder-val="{{ true }}"><button class="btn btn-primary" style="min-height:44px;min-width:150px;justify-content:flex-start" onClick="{{ c.onPlace }}">Place here</button></sc-if>
+              <sc-if value="{{ c.full }}" hint-placeholder-val="{{ false }}"><button class="btn btn-secondary" style="min-height:44px;min-width:150px;justify-content:flex-start" onClick="{{ c.onWait }}">Add to waitlist</button></sc-if>
+            </div>
+          </sc-for>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_payments }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="8"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0;display:flex;flex-direction:column">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Bank transfers</div><h2 style="margin:4px 0 0">Payment approvals · {{ counts.pay }} pending</h2></div><div style="font-size:13px;color:var(--color-neutral-700)">Today: 12 Paystack payments auto-verified · 1 reversal flagged</div></div>
+    <div style="flex:1;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)">
+      <div style="border-right:2px solid var(--color-divider);padding:0 28px">
+        <table class="table">
+          <thead><tr><th>Guardian · learner</th><th>Amount</th><th>Sent</th><th>Bank alert</th><th>Status</th></tr></thead>
+          <tbody><sc-for list="{{ payRows }}" as="p" hint-placeholder-count="4">
+            <tr onClick="{{ p.onClick }}" style="cursor:pointer;background:{{ p.bg }}">
+              <td><div style="font-weight:600">{{ p.parent }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ p.learner }} · {{ p.plan }}</div></td>
+              <td style="font-weight:600">{{ p.amount }}</td>
+              <td style="font-size:13px">{{ p.sent }}</td>
+              <td style="font-size:13px">{{ p.alert }}</td>
+              <td><span class="tag" style="background:{{ p.db }};color:{{ p.df }}">{{ p.dec }}</span></td>
+            </tr>
+          </sc-for></tbody>
+        </table>
+      </div>
+      <div style="padding:22px 28px;display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0">{{ spay.parent }}</h3>
+        <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 16px;font-size:14px;border-top:2px solid var(--color-text);padding-top:12px">
+          <span style="color:var(--color-neutral-700)">Learner</span><span>{{ spay.learner }}</span>
+          <span style="color:var(--color-neutral-700)">Plan</span><span>{{ spay.plan }}</span>
+          <span style="color:var(--color-neutral-700)">Amount</span><span style="font-weight:800">{{ spay.amount }}</span>
+          <span style="color:var(--color-neutral-700)">Bank · ref</span><span>{{ spay.bank }} · {{ spay.ref }}</span>
+        </div>
+        <div style="aspect-ratio:3 / 4;max-height:320px;background:var(--color-surface);border:1px dashed var(--color-divider);display:flex;align-items:flex-end;padding:12px;font-size:12px;color:var(--color-neutral-700)">Receipt uploaded by parent · {{ spay.sent }}</div>
+        <div style="padding:12px 14px;background:var(--color-accent-100);color:var(--color-accent-800);font-size:14px;font-weight:600">{{ spay.alert }}</div>
+        <sc-if value="{{ payOpen }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:1.4fr 1fr;gap:8px"><button class="btn btn-primary" style="min-height:48px;justify-content:flex-start" onClick="{{ onApprove }}">Approve payment</button><button class="btn btn-secondary" style="min-height:48px;justify-content:flex-start" onClick="{{ onReject }}">Reject · ask again</button></div></sc-if>
+        <sc-if value="{{ payDecided }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px;color:var(--color-neutral-700)">Decision logged to the audit trail.</div></sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_renewals }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="8"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Subscriptions</div><h2 style="margin:4px 0 0">Renewals · {{ counts.ren }} to follow up</h2></div><div style="font-size:13px;color:var(--color-neutral-700)">Reminders go out automatically at 7 days, 3 days and on expiry.</div></div>
+    <div style="padding:18px 28px">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+        <div style="display:flex;border:1px solid var(--color-divider)"><sc-for list="{{ rtabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.onClick }}" style="border:0;border-right:1px solid var(--color-divider);padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button></sc-for></div>
+        <button class="btn btn-secondary" onClick="{{ exportToast }}">Export list</button>
+      </div>
+      <table class="table">
+        <thead><tr><th>Learner · guardian</th><th>Plan</th><th>Ends</th><th>Status</th><th>Balance</th><th>Reminders</th><th>Outcome</th></tr></thead>
+        <tbody><sc-for list="{{ renRows }}" as="r" hint-placeholder-count="3">
+          <tr>
+            <td><div style="font-weight:600">{{ r.learner }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ r.parent }}</div></td>
+            <td>{{ r.plan }}</td><td>{{ r.ends }}</td>
+            <td style="font-size:13px;font-weight:600;color:var(--color-accent-700)">{{ r.left }}</td>
+            <td>{{ r.bal }}</td>
+            <td style="font-size:13px">{{ r.rem }}</td>
+            <td>
+              <sc-if value="{{ r.none }}" hint-placeholder-val="{{ true }}"><div style="display:flex;border:1px solid var(--color-divider);width:max-content"><button onClick="{{ r.onRenewed }}" style="border:0;background:transparent;padding:6px 10px;font-size:13px;cursor:pointer">Renewed</button><button onClick="{{ r.onGrace }}" style="border:0;border-left:1px solid var(--color-divider);background:transparent;padding:6px 10px;font-size:13px;cursor:pointer">Grace</button><button onClick="{{ r.onExit }}" style="border:0;border-left:1px solid var(--color-divider);background:transparent;padding:6px 10px;font-size:13px;cursor:pointer;color:var(--color-accent-700);font-weight:600">Exit</button></div></sc-if>
+              <sc-if value="{{ r.has }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;align-items:center"><span class="tag" style="background:{{ r.oBg }};color:#fff">{{ r.oLabel }}</span><button class="btn btn-ghost" onClick="{{ r.onUndo }}">Undo</button></div></sc-if>
+            </td>
+          </tr>
+        </sc-for></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.p_signin }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md);min-height:760px;display:flex;flex-direction:column">
+  <div style="background:var(--color-accent);color:#fff;padding:28px 16px 24px">
+    <div style="font:800 18px/1 var(--font-heading)">Flying Colours</div>
+    <div style="font:800 48px/0.95 var(--font-heading);letter-spacing:-.03em;margin-top:56px">Sign in</div>
+    <div style="font-size:15px;margin-top:8px">Parents sign in with their WhatsApp number. No password.</div>
+  </div>
+  <div style="padding:20px 16px;display:flex;flex-direction:column;gap:14px;flex:1">
+    <div class="field"><label>WhatsApp number</label><div style="display:grid;grid-template-columns:88px 1fr;gap:6px"><select class="input" style="min-height:48px"><option>+234</option><option>+44</option><option>+1</option></select><input class="input" style="min-height:48px;font-size:16px" defaultValue="803 412 7765"></div></div>
+    <sc-if value="{{ otpIdle }}" hint-placeholder-val="{{ true }}"><button class="btn btn-primary btn-block" style="min-height:52px;font-size:16px" onClick="{{ onSendCode }}">Send me a code</button></sc-if>
+    <sc-if value="{{ otpSent }}" hint-placeholder-val="{{ false }}">
+      <div class="field"><label>6-digit code sent by WhatsApp</label>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px"><sc-for list="{{ otpBoxes }}" as="b" hint-placeholder-count="6"><div style="height:56px;border:2px solid {{ b.bd }};background:var(--color-surface);display:grid;place-items:center;font:800 24px/1 var(--font-heading)">{{ b.d }}</div></sc-for></div>
+      </div>
+      <button class="btn btn-primary btn-block" style="min-height:52px;font-size:16px" onClick="{{ onVerify }}">Verify and continue</button>
+      <button class="btn btn-ghost" onClick="{{ onSendCode }}">Resend code</button>
+    </sc-if>
+    <div style="margin-top:auto;border-top:2px solid var(--color-divider);padding-top:14px;display:grid;gap:8px">
+      <button class="btn btn-secondary btn-block" style="min-height:48px" onClick="{{ toPin }}">A child is signing in with a PIN</button>
+      <div style="font-size:13px;color:var(--color-neutral-700)">New to Flying Colours? <a href="#" onClick="{{ toParentSignup }}">Enrol a child</a></div>
+    </div>
+  </div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.p_progress }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:2px solid var(--color-divider)"><div style="font:800 17px/1 var(--font-heading)">Tolu’s progress</div><div style="font-size:13px;color:var(--color-neutral-700)">Starlight Readers</div></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid var(--color-divider)">
+    <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font:800 30px/1 var(--font-heading)">88%</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Attendance this term</div></div>
+    <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font:800 30px/1 var(--font-heading)">92%</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Tasks on time</div></div>
+    <div style="padding:16px"><div style="font:800 30px/1 var(--font-heading)">24</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Feedback notes</div></div>
+  </div>
+  <div style="padding:16px;border-bottom:2px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:10px">Rubric score · last 8 weeks (out of 5)</div>
+    <sc-for list="{{ skillTrend }}" as="k" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:110px 1fr 24px;gap:10px;align-items:end;padding:8px 0;border-bottom:1px solid var(--color-divider)">
+        <div style="font-size:14px;font-weight:600">{{ k.label }}</div>
+        <div style="display:flex;gap:4px;align-items:flex-end;height:46px"><sc-for list="{{ k.bars }}" as="b" hint-placeholder-count="8"><div style="flex:1;height:{{ b.h }};background:{{ b.bg }}"></div></sc-for></div>
+        <div style="font:800 18px/1 var(--font-heading)">{{ k.now }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="padding:16px 16px 4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Feedback history</div>
+  <div style="padding:0 16px">
+    <div style="padding:12px 0;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span>Tue 29 Sep · My favourite food</span><span class="tag tag-accent">Grammar 3</span></div><div style="font-size:14px;margin-top:4px">“Great describing words! Say ‘I ate’, not ‘I eated’.” <span style="color:var(--color-neutral-700)">· voice note 0:48</span></div></div>
+    <div style="padding:12px 0;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span>Fri 25 Sep · The Rain Song</span><span class="tag tag-accent">Fluency 4</span></div><div style="font-size:14px;margin-top:4px">“Lovely clear reading. Slow down on the long words.”</div></div>
+    <div style="padding:12px 0;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span>Tue 22 Sep · Picture talk</span><span class="tag tag-accent">Confidence 4</span></div><div style="font-size:14px;margin-top:4px">“You spoke up without being asked — well done!”</div></div>
+  </div>
+  <div style="padding:16px"><button class="btn btn-secondary btn-block" style="min-height:48px" onClick="{{ exportToast }}">Download September report (PDF)</button></div>
+  <div style="position:sticky;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--color-divider);background:var(--color-bg)"><sc-for list="{{ ptabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.onClick }}" style="min-height:52px;border:0;border-top:3px solid {{ t.bd }};background:transparent;cursor:pointer;font-size:14px;font-weight:600;text-align:left;padding:0 16px;color:{{ t.fg }}">{{ t.label }}</button></sc-for></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.p_inbox }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-bg);box-shadow:var(--shadow-md)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:2px solid var(--color-divider)"><div style="font:800 17px/1 var(--font-heading)">Messages</div><div style="font-size:12px;color:var(--color-neutral-700)">Also sent on WhatsApp</div></div>
+  <div style="padding:16px;border-bottom:2px solid var(--color-divider);background:var(--color-surface)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Weekly summary · Sun 27 Sep</div><span style="font-size:12px;color:var(--color-neutral-700)">WhatsApp · Email</span></div>
+    <div style="font-weight:800;font-size:18px;margin:6px 0 10px">Tolu’s week 13</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;border-top:2px solid var(--color-text);padding-top:10px">
+      <span style="color:var(--color-neutral-700)">Live classes</span><span>1 of 2 · missed Sat (recording sent)</span>
+      <span style="color:var(--color-neutral-700)">Tasks</span><span>2 of 2 submitted on time</span>
+      <span style="color:var(--color-neutral-700)">Feedback</span><span>Fluency 4 · Grammar 3</span>
+      <span style="color:var(--color-neutral-700)">Coming up</span><span>Task Mon 9 am · class Sat 5 pm</span>
+      <span style="color:var(--color-neutral-700)">Subscription</span><span style="color:var(--color-accent-700);font-weight:600">Ends 5 Oct</span>
+    </div>
+  </div>
+  <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span style="font-weight:600;color:var(--color-accent-700)">Renewal · 7 days</span><span>Tue 29 Sep</span></div><div style="font-size:14px;margin:4px 0 8px">Tolu’s annual plan ends Mon 5 Oct. Renew to keep her place in Starlight Readers.</div><button class="btn btn-primary" onClick="{{ onRenew }}">Pay ₦120,000</button></div>
+  <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span style="font-weight:600;color:var(--color-text)">Feedback ready</span><span>Tue 29 Sep</span></div><div style="font-size:14px;margin-top:4px">Ms Adaeze left feedback on “My favourite food”.</div></div>
+  <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span style="font-weight:600;color:var(--color-text)">Submitted</span><span>Mon 28 Sep</span></div><div style="font-size:14px;margin-top:4px">Tolu sent her video at 7:42 pm. Only you and Ms Adaeze can see it.</div></div>
+  <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span style="font-weight:600;color:var(--color-text)">New task</span><span>Mon 28 Sep</span></div><div style="font-size:14px;margin-top:4px">“My favourite food” is open. Due Tue 3 pm.</div></div>
+  <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span style="font-weight:600;color:var(--color-accent-700)">Missed class</span><span>Sat 26 Sep</span></div><div style="font-size:14px;margin-top:4px">Tolu missed today’s class. Watch the recording before Sunday.</div></div>
+  <div style="padding:14px 16px;border-bottom:1px solid var(--color-divider)"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700)"><span style="font-weight:600;color:var(--color-text)">Announcement</span><span>Thu 24 Sep</span></div><div style="font-size:14px;margin-top:4px">No live class on Sun 4 Oct (Independence Day weekend). Saturday runs as normal.</div></div>
+  <div style="position:sticky;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--color-divider);background:var(--color-bg)"><sc-for list="{{ ptabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.onClick }}" style="min-height:52px;border:0;border-top:3px solid {{ t.bd }};background:transparent;cursor:pointer;font-size:14px;font-weight:600;text-align:left;padding:0 16px;color:{{ t.fg }}">{{ t.label }}</button></sc-for></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.l_pin }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;justify-content:center;padding:32px 12px">
+<div style="width:390px;max-width:100%;background:var(--color-accent);color:#fff;box-shadow:var(--shadow-md);min-height:760px;display:flex;flex-direction:column;padding:24px 16px">
+  <sc-if value="{{ noWho }}" hint-placeholder-val="{{ true }}">
+    <div style="font:800 56px/0.92 var(--font-heading);letter-spacing:-.03em;margin:40px 0 24px">Who’s learning today?</div>
+    <div style="display:grid;gap:10px">
+      <sc-for list="{{ whos }}" as="w" hint-placeholder-count="2">
+        <button onClick="{{ w.onClick }}" style="display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;background:#fff;color:var(--color-text);border:0;padding:12px;cursor:pointer;text-align:left">
+          <div style="width:72px;height:72px;background:var(--color-text);color:#fff;display:grid;place-items:center;font:800 36px/1 var(--font-heading)">{{ w.initial }}</div>
+          <div><div style="font:800 28px/1 var(--font-heading)">{{ w.name }}</div><div style="font-size:14px;color:var(--color-neutral-700);margin-top:4px">{{ w.cls }}</div></div>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin-top:auto;font-size:14px">Your parent set up your PIN. Ask them if you forget it.</div>
+  </sc-if>
+  <sc-if value="{{ hasWho }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ onBackWho }}" style="align-self:flex-start;white-space:nowrap;background:transparent;border:1px solid #fff;color:#fff;padding:10px 14px;font-size:14px;cursor:pointer;min-height:44px">← Not {{ who }}?</button>
+    <div style="font:800 52px/0.95 var(--font-heading);letter-spacing:-.03em;margin:32px 0 20px">Hi {{ who }}! Type your PIN</div>
+    <div style="display:flex;gap:12px;margin-bottom:28px"><sc-for list="{{ pinDots }}" as="d" hint-placeholder-count="4"><div style="width:28px;height:28px;border:3px solid #fff;background:{{ d.bg }}"></div></sc-for></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto">
+      <sc-for list="{{ keys }}" as="k" hint-placeholder-count="12">
+        <sc-if value="{{ k.has }}" hint-placeholder-val="{{ true }}"><button onClick="{{ k.onClick }}" style="height:72px;background:var(--color-accent-700);color:#fff;border:0;font:800 30px/1 var(--font-heading);cursor:pointer;text-align:left;padding:0 18px">{{ k.k }}</button></sc-if>
+        <sc-if value="{{ k.blank }}" hint-placeholder-val="{{ false }}"><div></div></sc-if>
+      </sc-for>
+    </div>
+  </sc-if>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ on.t_session }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;gap:16px;padding:12px 20px;border-bottom:2px solid var(--color-divider);flex-wrap:wrap">
+    <button class="btn btn-secondary" onClick="{{ toQueue }}">← Starlight Readers</button>
+    <div style="font-weight:800">Register · Sun 27 Sep · 5:00–6:00 pm WAT</div>
+    <div style="margin-left:auto;display:flex;gap:20px;font-size:14px"><span><b>{{ attN.P }}</b> present</span><span><b>{{ attN.L }}</b> late</span><span style="color:var(--color-accent-700)"><b>{{ attN.A }}</b> absent</span></div>
+  </div>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+    <div style="padding:18px 24px;border-right:2px solid var(--color-divider)">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap"><div style="font-size:13px;color:var(--color-neutral-700)">Everyone starts as present. Tap the exceptions.</div><button class="btn btn-ghost" onClick="{{ onAllPresent }}">Reset to all present</button></div>
+      <sc-for list="{{ roster }}" as="r" hint-placeholder-count="12">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--color-divider)">
+          <div><div style="font-weight:600;font-size:15px">{{ r.name }}</div><div style="font-size:12px;color:var(--color-neutral-700)">Age {{ r.age }}</div></div>
+          <div style="display:flex;border:1px solid var(--color-divider)"><sc-for list="{{ r.opts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="border:0;border-left:1px solid var(--color-divider);min-width:84px;min-height:40px;padding:0 12px;font-size:13px;font-weight:600;text-align:left;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding:18px 24px;display:flex;flex-direction:column;gap:18px">
+      <div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Recording</div>
+        <sc-if value="{{ recOff }}" hint-placeholder-val="{{ true }}">
+          <div style="border:2px dashed var(--color-divider);padding:16px;display:grid;gap:10px">
+            <div style="font-weight:800">Zoom cloud recording found · 58 min</div>
+            <div style="font-size:13px;color:var(--color-neutral-700)">Sun 27 Sep, 5:02 pm · from the class’s Zoom room. Only this class’s learners and parents can watch it.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" onClick="{{ onAttachRec }}">Attach to session</button><button class="btn btn-secondary" onClick="{{ addChild }}">Upload a file instead</button></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ recOn }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-text);color:var(--color-bg);padding:16px"><div style="font-weight:800">✓ Recording attached · 58 min</div><div style="font-size:13px;color:var(--color-neutral-400)">Shown on the class page and in absent-learner follow-ups.</div></div>
+        </sc-if>
+      </div>
+      <div style="border-top:2px solid var(--color-divider);padding-top:14px">
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">After you save</div>
+        <div style="display:grid;grid-template-columns:28px 1fr;gap:8px 10px;font-size:14px">
+          <b style="color:var(--color-accent)">1</b><span>Parents of the {{ attN.A }} absent learners get a WhatsApp message with the recording link.</span>
+          <b style="color:var(--color-accent)">2</b><span>Learners absent 2 weeks running are flagged to Mrs Ronke (lead tutor).</span>
+          <b style="color:var(--color-accent)">3</b><span>Attendance is added to each learner’s timeline.</span>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" style="min-height:52px;font-size:15px;margin-top:auto" onClick="{{ onSaveReg }}">Save register</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.t_task }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;gap:16px;padding:12px 20px;border-bottom:2px solid var(--color-divider);flex-wrap:wrap">
+    <button class="btn btn-secondary" onClick="{{ toQueue }}">← Starlight Readers</button>
+    <div style="font-weight:800">New task · Wednesday slot · week 14</div>
+  </div>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">
+    <div style="border-right:2px solid var(--color-divider)">
+      <div style="padding:14px 18px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Curriculum bank · Beginner</div>
+      <sc-for list="{{ tpls }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.onClick }}" style="width:100%;border:0;border-bottom:1px solid var(--color-divider);border-left:4px solid {{ t.bl }};background:{{ t.bg }};text-align:left;cursor:pointer;padding:12px 18px"><div style="font-weight:800;font-size:15px">{{ t.name }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ t.type }} answer</div></button>
+      </sc-for>
+      <div style="padding:12px 18px"><button class="btn btn-ghost" onClick="{{ addChild }}">Start from blank</button></div>
+    </div>
+    <div style="padding:18px 24px;display:flex;flex-direction:column;gap:14px;border-right:2px solid var(--color-divider);grid-column:span 2;min-width:0">
+      <div class="field"><label>Title</label><input class="input" style="min-height:44px;font-weight:600" value="{{ task.title }}" readOnly></div>
+      <div class="field"><label>Instructions for learners</label><textarea class="input" value="{{ task.ins }}" readOnly></textarea></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-neutral">Story sheet.pdf</span><span class="tag tag-neutral">Example video · 0:40</span><button class="btn btn-ghost" onClick="{{ addChild }}">Add attachment</button></div>
+      <div class="field"><label>Learners answer with</label><div style="display:flex;border:1px solid var(--color-divider);width:max-content;max-width:100%"><sc-for list="{{ rtypes }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="border:0;border-right:1px solid var(--color-divider);min-height:40px;padding:0 16px;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div></div>
+      <div class="field"><label>Release</label><div style="display:flex;border:1px solid var(--color-divider);flex-wrap:wrap;width:max-content;max-width:100%"><sc-for list="{{ slots }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="border:0;border-right:1px solid var(--color-divider);min-height:40px;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div></div>
+      <div class="field"><label>Time to submit</label><div style="display:flex;border:1px solid var(--color-divider);width:max-content"><sc-for list="{{ dls }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.onClick }}" style="border:0;border-right:1px solid var(--color-divider);min-height:40px;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div><div style="font-size:13px;color:var(--color-neutral-700);margin-top:6px">Deadline: <b style="color:var(--color-text)">{{ task.due }}</b> · reminder to parents 3 hours before</div></div>
+      <button class="btn btn-primary btn-block" style="min-height:52px;font-size:15px;margin-top:auto" onClick="{{ onSchedule }}">Schedule task</button>
+    </div>
+    <div style="padding:18px 20px;background:var(--color-surface)">
+      <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:10px">Learner preview</div>
+      <div style="background:var(--color-bg);border:2px solid var(--color-text);padding:14px;max-width:300px">
+        <div style="font-size:11px;font-weight:600;color:var(--color-neutral-700);text-transform:uppercase;letter-spacing:.08em">Task · {{ task.rtype }}</div>
+        <div style="font:800 22px/1.1 var(--font-heading);margin:4px 0 8px">{{ task.title }}</div>
+        <div style="font-size:13px;line-height:1.45;margin-bottom:10px">{{ task.ins }}</div>
+        <div style="font-size:12px;color:var(--color-accent-700);font-weight:600;margin-bottom:10px">Due {{ task.due }}</div>
+        <div style="background:var(--color-accent);color:#fff;font-weight:800;padding:14px 12px;font-size:15px">{{ task.verb }}</div>
+      </div>
+      <div style="font-size:12px;color:var(--color-neutral-700);margin-top:10px">Opens {{ task.release }}. Learners and parents are notified on release.</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_learner }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+      <div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Learner · FC-0412</div><h2 style="margin:4px 0 0">Tolu Adeyemi</h2><div style="font-size:14px;color:var(--color-neutral-700)">Age 8 · Beginner · {{ curClassName }}</div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-secondary" onClick="{{ onOpenMove }}">Move class</button><button class="btn btn-secondary" onClick="{{ addChild }}">Edit profile</button><button class="btn btn-primary" onClick="{{ goRen }}">Renewal</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))">
+      <div style="padding:20px 28px;border-right:2px solid var(--color-divider)">
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Record</div>
+        <div style="display:grid;grid-template-columns:130px 1fr;gap:8px 16px;font-size:14px;border-top:2px solid var(--color-text);padding-top:12px">
+          <span style="color:var(--color-neutral-700)">Guardian</span><span>Funmi Adeyemi · +234 803 412 7765</span>
+          <span style="color:var(--color-neutral-700)">Siblings</span><span>Dami Adeyemi, 11 · Bold Speakers</span>
+          <span style="color:var(--color-neutral-700)">Class · tutor</span><span>{{ curClassName }} · Ms Adaeze</span>
+          <span style="color:var(--color-neutral-700)">Registered</span><span>4 Oct 2025</span>
+          <span style="color:var(--color-neutral-700)">Goals</span><span>Read aloud with confidence; speak up in class.</span>
+          <span style="color:var(--color-neutral-700)">Consent</span><span>Data ✓ · Recordings ✓ · Showcase ✗</span>
+          <span style="color:var(--color-neutral-700)">Sign-in</span><span>Child PIN set by parent</span>
+        </div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin:24px 0 8px">Subscription</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--color-text)">
+          <div style="padding:12px 12px 12px 0;border-right:1px solid var(--color-divider)"><div style="font:800 20px/1 var(--font-heading)">₦120,000</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Annual · paid</div></div>
+          <div style="padding:12px;border-right:1px solid var(--color-divider)"><div style="font:800 20px/1 var(--font-heading)">₦0</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Balance</div></div>
+          <div style="padding:12px"><div style="font:800 20px/1 var(--font-heading);color:var(--color-accent)">5 Oct</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Expiring · 6 days</div></div>
+        </div>
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin:24px 0 8px">This term</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--color-text)">
+          <div style="padding:12px 12px 12px 0;border-right:1px solid var(--color-divider)"><div style="font:800 20px/1 var(--font-heading)">88%</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Attendance</div></div>
+          <div style="padding:12px;border-right:1px solid var(--color-divider)"><div style="font:800 20px/1 var(--font-heading)">92%</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">On-time tasks</div></div>
+          <div style="padding:12px"><div style="font:800 20px/1 var(--font-heading)">3.6</div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">Avg rubric</div></div>
+        </div>
+      </div>
+      <div style="padding:20px 28px">
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Timeline · kept through every class and tutor change</div>
+        <div style="border-top:2px solid var(--color-text)">
+          <sc-for list="{{ timeline }}" as="e" hint-placeholder-count="8">
+            <div style="display:grid;grid-template-columns:100px 100px minmax(0,1fr);gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--color-divider);font-size:13px">
+              <span style="color:var(--color-neutral-700)">{{ e.d }}</span><span style="font-weight:600;color:{{ e.kc }}">{{ e.k }}</span><span>{{ e.t }} <span style="color:var(--color-neutral-700)">· {{ e.by }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ moveOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="dialog-backdrop" style="z-index:25">
+      <div class="dialog">
+        <div class="dialog-title">Move Tolu to another class</div>
+        <div class="dialog-body">Her submissions, feedback and attendance move with her. The new tutor sees her full history.</div>
+        <sc-for list="{{ moveOpts }}" as="m" hint-placeholder-count="3"><button onClick="{{ m.onClick }}" style="text-align:left;border:2px solid {{ m.bd }};background:{{ m.bg }};padding:10px 12px;cursor:{{ m.cur }};opacity:{{ m.op }}"><div style="font-weight:800">{{ m.name }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ m.band }} · {{ m.seatLabel }}</div></button></sc-for>
+        <div class="field"><label>Reason</label><select class="input"><option>Schedule</option><option>Level up</option><option>Level down</option><option>Parent request</option></select></div>
+        <div class="dialog-actions"><button class="btn btn-secondary" onClick="{{ onCloseMove }}">Cancel</button><button class="btn btn-primary" onClick="{{ onMove }}">Move learner</button></div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_classes }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">31 classes · 5 shown</div><h2 style="margin:4px 0 0">Classes</h2></div><button class="btn btn-primary" onClick="{{ addChild }}">New class</button></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      <div style="padding:0 28px;border-right:2px solid var(--color-divider)">
+        <table class="table">
+          <thead><tr><th>Class</th><th>Tutor</th><th>Fill</th></tr></thead>
+          <tbody><sc-for list="{{ classRows }}" as="c" hint-placeholder-count="5">
+            <tr onClick="{{ c.onClick }}" style="cursor:pointer;background:{{ c.bg }}">
+              <td><div style="font-weight:600">{{ c.name }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ c.band }}</div></td>
+              <td>{{ c.tutorNow }}</td>
+              <td><div style="display:flex;align-items:center;gap:8px"><div style="width:80px;height:8px;background:var(--color-neutral-300)"><div style="height:8px;background:var(--color-text);width:{{ c.pct }}"></div></div><span style="font-size:13px">{{ c.filled }}/{{ c.cap }}</span></div></td>
+            </tr>
+          </sc-for></tbody>
+        </table>
+      </div>
+      <div style="padding:20px 28px;display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0">{{ cc.name }}</h3>
+        <div style="display:grid;grid-template-columns:130px 1fr;gap:8px 16px;font-size:14px;border-top:2px solid var(--color-text);padding-top:12px">
+          <span style="color:var(--color-neutral-700)">Age · level</span><span>{{ cc.band }}</span>
+          <span style="color:var(--color-neutral-700)">Capacity</span><span>{{ cc.filled }} of {{ cc.cap }} seats</span>
+          <span style="color:var(--color-neutral-700)">Live classes</span><span>Sat &amp; Sun · 5:00–6:00 pm WAT</span>
+          <span style="color:var(--color-neutral-700)">Zoom link</span><span style="font-weight:600">{{ cc.zoom }} <span style="font-weight:400;color:var(--color-neutral-700)">· stays the same</span></span>
+          <span style="color:var(--color-neutral-700)">Tasks</span><span>Mon &amp; Wed release · Tue &amp; Fri corrections</span>
+          <span style="color:var(--color-neutral-700)">Next cohort</span><span>{{ cc.cohort }}</span>
+        </div>
+        <div class="field"><label>Tutor · tap to reassign</label><div style="display:flex;flex-wrap:wrap;border:1px solid var(--color-divider);width:max-content;max-width:100%"><sc-for list="{{ tutorOpts }}" as="o" hint-placeholder-count="5"><button onClick="{{ o.onClick }}" style="border:0;border-right:1px solid var(--color-divider);min-height:40px;padding:0 12px;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div><div style="font-size:12px;color:var(--color-neutral-700);margin-top:6px">The new tutor inherits every learner’s full history.</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-secondary" onClick="{{ toLearner }}">View roster</button><button class="btn btn-secondary" onClick="{{ addChild }}">Edit class</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_reports }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Pilot · week 2 of 4</div><h2 style="margin:4px 0 0">Reports</h2></div>
+      <div style="display:flex;gap:10px;align-items:center"><div style="display:flex;border:1px solid var(--color-divider)"><sc-for list="{{ ranges }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="border:0;border-right:1px solid var(--color-divider);min-height:36px;padding:0 12px;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div><button class="btn btn-secondary" onClick="{{ exportToast }}">Export CSV</button></div></div>
+    <div style="padding:18px 28px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700)">Pilot success metrics</div>
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-divider);margin:0 28px">
+      <div style="padding:16px 16px 16px 0;border-right:1px solid var(--color-divider)"><div style="font:800 32px/1 var(--font-heading)">1.5 days</div><div style="font-size:13px;margin-top:6px">Enquiry → placement</div><div style="font-size:12px;color:var(--color-neutral-700)">Baseline 4 days · target ≤ 2</div></div>
+      <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font:800 32px/1 var(--font-heading)">100%</div><div style="font-size:13px;margin-top:6px">Sessions with a register</div><div style="font-size:12px;color:var(--color-neutral-700)">Target 100% · met</div></div>
+      <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font:800 32px/1 var(--font-heading)">0</div><div style="font-size:13px;margin-top:6px">Submissions via WhatsApp</div><div style="font-size:12px;color:var(--color-neutral-700)">Target 0 · met</div></div>
+      <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font:800 32px/1 var(--font-heading);color:var(--color-accent)">88%</div><div style="font-size:13px;margin-top:6px">Feedback by correction day</div><div style="font-size:12px;color:var(--color-accent-700)">Target ≥ 90% · 2 pts short</div></div>
+      <div style="padding:16px"><div style="font:800 32px/1 var(--font-heading)">4.2 min</div><div style="font-size:13px;margin-top:6px">Review time per submission</div><div style="font-size:12px;color:var(--color-neutral-700)">Baseline 7 min</div></div>
+    </div>
+    <div style="padding:22px 28px">
+      <h4 style="margin:0 0 12px">Submission and attendance by class</h4>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;gap:0 16px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:6px;border-bottom:2px solid var(--color-divider)"><span>Class</span><span>Tasks submitted</span><span>Attendance</span></div>
+      <sc-for list="{{ bars }}" as="b" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:160px 1fr 1fr;gap:0 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--color-divider);font-size:14px">
+          <span style="font-weight:600">{{ b.name }}</span>
+          <div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:14px;background:var(--color-neutral-200)"><div style="height:14px;background:var(--color-text);width:{{ b.subW }}"></div></div><span style="width:40px">{{ b.sub }}</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:14px;background:var(--color-neutral-200)"><div style="height:14px;background:var(--color-accent);width:{{ b.attW }}"></div></div><span style="width:40px">{{ b.att }}</span></div>
+        </div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:24px;border-top:2px solid var(--color-text)">
+        <div style="padding:14px 14px 14px 0;border-right:1px solid var(--color-divider)"><div style="font:800 24px/1 var(--font-heading)">612</div><div style="font-size:13px;margin-top:4px">Active learners</div></div>
+        <div style="padding:14px;border-right:1px solid var(--color-divider)"><div style="font:800 24px/1 var(--font-heading)">84%</div><div style="font-size:13px;margin-top:4px">Class fill</div></div>
+        <div style="padding:14px;border-right:1px solid var(--color-divider)"><div style="font:800 24px/1 var(--font-heading)">41</div><div style="font-size:13px;margin-top:4px">Renewals due in 30 days</div></div>
+        <div style="padding:14px"><div style="font:800 24px/1 var(--font-heading)">100%</div><div style="font-size:13px;margin-top:4px">Expiries flagged ≥ 7 days ahead</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_announce }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider)"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Replaces WhatsApp group broadcasts</div><h2 style="margin:4px 0 0">Announcements</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))">
+      <div style="padding:20px 28px;border-right:2px solid var(--color-divider);display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ annUnsent }}" hint-placeholder-val="{{ true }}">
+          <div class="field"><label>Send to</label><div style="display:flex;border:1px solid var(--color-divider);width:max-content;max-width:100%"><sc-for list="{{ annAuds }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="border:0;border-right:1px solid var(--color-divider);min-height:40px;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button></sc-for></div></div>
+          <div class="field"><label>Class</label><select class="input" style="min-height:44px"><option>Starlight Readers</option><option>Little Voices</option><option>Word Explorers</option><option>Bold Speakers</option><option>Young Authors</option></select></div>
+          <div class="field"><label>Message</label><textarea class="input" style="min-height:120px" defaultValue="No live class on Sun 4 Oct (Independence Day weekend). Saturday’s class runs as normal at 5 pm, and Monday’s task opens as usual."></textarea></div>
+          <div class="field"><label>Channels</label><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ annChs }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.onClick }}" style="border:1px solid var(--color-divider);min-height:40px;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }}">{{ c.label }}</button></sc-for></div></div>
+          <div style="font-size:13px;color:var(--color-neutral-700)">Reaches {{ annReach }}.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" style="min-height:48px;min-width:200px;justify-content:flex-start" onClick="{{ onSendAnn }}">Send now</button><button class="btn btn-secondary" style="min-height:48px" onClick="{{ addChild }}">Schedule</button></div>
+        </sc-if>
+        <sc-if value="{{ annIsSent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-text);color:var(--color-bg);padding:20px"><div style="font:800 24px/1.1 var(--font-heading)">Sent to {{ annReach }}</div><div style="font-size:13px;color:var(--color-neutral-400);margin-top:6px">Delivery tracked per family. Parents who miss it see it in-app.</div></div>
+          <button class="btn btn-secondary" style="align-self:flex-start" onClick="{{ onNewAnn }}">Write another</button>
+        </sc-if>
+      </div>
+      <div style="padding:20px 28px">
+        <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:8px">Recent</div>
+        <table class="table">
+          <thead><tr><th>Sent</th><th>To</th><th>Message</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td style="font-size:13px">Thu 24 Sep</td><td style="font-size:13px">All parents</td><td style="font-size:13px">Term 1 report cards arrive 30 Sep.</td><td style="font-size:13px">81%</td></tr>
+            <tr><td style="font-size:13px">Mon 21 Sep</td><td style="font-size:13px">Bold Speakers</td><td style="font-size:13px">Debate showcase this Saturday.</td><td style="font-size:13px">94%</td></tr>
+            <tr><td style="font-size:13px">Fri 18 Sep</td><td style="font-size:13px">All learners</td><td style="font-size:13px">New: record video straight from the app.</td><td style="font-size:13px">76%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_import }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider)"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">One-time migration</div><h2 style="margin:4px 0 0">Import existing learners</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--color-divider)"><sc-for list="{{ impSteps }}" as="p" hint-placeholder-count="4"><div style="padding:12px 20px;background:{{ p.bg }};color:{{ p.fg }};font-size:13px;font-weight:600;border-right:1px solid var(--color-divider)">{{ p.n }} · {{ p.label }}</div></sc-for></div>
+    <div style="padding:24px 28px;max-width:900px">
+      <sc-if value="{{ imp.s1 }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ impNext }}" style="width:100%;border:2px dashed var(--color-divider);background:var(--color-surface);min-height:180px;cursor:pointer;text-align:left;padding:24px"><div style="font:800 22px/1.1 var(--font-heading)">Drop the Google Sheet export here</div><div style="font-size:14px;color:var(--color-neutral-700);margin-top:6px">CSV or XLSX · one row per learner · include guardian phone</div><div style="margin-top:16px;font-size:14px;font-weight:600;color:var(--color-accent-700)">Demo: use learners_master_sheet.csv (612 rows) →</div></button>
+      </sc-if>
+      <sc-if value="{{ imp.s2 }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:14px;margin-bottom:10px"><b>learners_master_sheet.csv</b> · 612 rows · 11 columns</div>
+        <table class="table">
+          <thead><tr><th>Sheet column</th><th>Sample</th><th>Maps to</th></tr></thead>
+          <tbody>
+            <tr><td>Child Name</td><td>Tolu Adeyemi</td><td style="font-weight:600">Learner · first + last name</td></tr>
+            <tr><td>Age</td><td>8</td><td style="font-weight:600">Learner · age</td></tr>
+            <tr><td>Parent Name</td><td>Funmi Adeyemi</td><td style="font-weight:600">Guardian · name</td></tr>
+            <tr><td>WhatsApp</td><td>08034127765</td><td style="font-weight:600">Guardian · phone (+234)</td></tr>
+            <tr><td>WhatsApp Group</td><td>FC Starlight 2</td><td style="font-weight:600">Class · Starlight Readers</td></tr>
+            <tr><td>Paid Date</td><td>04/10/2025</td><td style="font-weight:600">Subscription · start</td></tr>
+            <tr><td>Amount</td><td>120000</td><td style="font-weight:600">Payment · amount (NGN)</td></tr>
+            <tr><td>Notes</td><td>shy, good reader</td><td style="font-weight:600">Learner · goals</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:8px;margin-top:16px"><button class="btn btn-secondary" onClick="{{ impBack }}">Back</button><button class="btn btn-primary" style="min-width:180px;justify-content:flex-start" onClick="{{ impNext }}">Check rows</button></div>
+      </sc-if>
+      <sc-if value="{{ imp.s3 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-divider)">
+          <div style="padding:16px 16px 16px 0;border-right:1px solid var(--color-divider)"><div style="font:800 36px/1 var(--font-heading)">595</div><div style="font-size:13px;margin-top:4px">Ready to import</div></div>
+          <div style="padding:16px;border-right:1px solid var(--color-divider)"><div style="font:800 36px/1 var(--font-heading);color:var(--color-accent)">12</div><div style="font-size:13px;margin-top:4px">Possible duplicates · same phone + name</div></div>
+          <div style="padding:16px"><div style="font:800 36px/1 var(--font-heading);color:var(--color-accent)">5</div><div style="font-size:13px;margin-top:4px">Missing age · import as “needs review”</div></div>
+        </div>
+        <div style="font-size:14px;color:var(--color-neutral-800);margin:14px 0">Siblings sharing one phone number are grouped under a single guardian. Nobody is messaged during import.</div>
+        <div style="display:flex;gap:8px"><button class="btn btn-secondary" onClick="{{ impBack }}">Back</button><button class="btn btn-primary" style="min-width:180px;justify-content:flex-start" onClick="{{ impNext }}">Import 600 learners</button></div>
+      </sc-if>
+      <sc-if value="{{ imp.s4 }}" hint-placeholder-val="{{ false }}">
+        <div style="background:var(--color-accent);color:#fff;padding:24px"><div style="font:800 40px/1 var(--font-heading)">600 learners imported</div><div style="font-size:15px;margin-top:8px">540 guardians · 31 classes · 17 rows kept for review in Learners.</div></div>
+        <div style="display:flex;gap:8px;margin-top:16px"><button class="btn btn-secondary" onClick="{{ toLearner }}">Open Learners</button><button class="btn btn-ghost" onClick="{{ impReset }}">Restart demo</button></div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_staff }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Settings</div><h2 style="margin:4px 0 0">Staff &amp; roles</h2></div><button class="btn btn-primary" onClick="{{ inviteToast }}">Invite staff</button></div>
+    <div style="padding:18px 28px">
+      <table class="table">
+        <thead><tr><th>Name</th><th>Role</th><th>Classes</th><th>2-factor</th><th>Last active</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Hassan Bello</td><td><span class="tag" style="background:var(--color-text);color:var(--color-bg)">Owner</span></td><td>All</td><td>On</td><td>Now</td></tr>
+          <tr><td style="font-weight:600">Mrs Ronke Alade</td><td><span class="tag tag-accent">Lead tutor</span></td><td>All · oversight</td><td>On</td><td>12 min ago</td></tr>
+          <tr><td style="font-weight:600">Blessing Akpan</td><td><span class="tag tag-accent">Customer service</span></td><td>—</td><td>On</td><td>1 h ago</td></tr>
+          <tr><td style="font-weight:600">Ms Adaeze Obi</td><td><span class="tag tag-neutral">Tutor</span></td><td>Starlight Readers, Little Voices, Word Explorers</td><td>On</td><td>Today</td></tr>
+          <tr><td style="font-weight:600">Mr Tunde Bakare</td><td><span class="tag tag-neutral">Tutor</span></td><td>Bold Speakers</td><td>On</td><td>Yesterday</td></tr>
+          <tr><td style="font-weight:600">Ms Ruth Okon</td><td><span class="tag tag-neutral">Tutor</span></td><td>Word Explorers, Young Authors</td><td style="color:var(--color-accent-700);font-weight:600">Not set up</td><td>3 days ago</td></tr>
+        </tbody>
+      </table>
+      <h4 style="margin:28px 0 8px">What each role can do</h4>
+      <table class="table">
+        <thead><tr><th>Capability</th><th>Owner</th><th>Lead tutor</th><th>Customer service</th><th>Tutor</th></tr></thead>
+        <tbody>
+          <tr><td>Approve payments</td><td>✓</td><td>—</td><td>✓</td><td>—</td></tr>
+          <tr><td>Place learners · assign tutors</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+          <tr><td>Registers, tasks, feedback</td><td>✓</td><td>All classes</td><td>—</td><td>Own classes</td></tr>
+          <tr><td>Renewals follow-up</td><td>✓</td><td>—</td><td>✓</td><td>—</td></tr>
+          <tr><td>View submissions</td><td>✓</td><td>All</td><td>—</td><td>Own classes</td></tr>
+          <tr><td>Reports</td><td>✓</td><td>Classes only</td><td>Renewals only</td><td>Own classes</td></tr>
+          <tr><td>Staff, settings, payment setup</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ on.a_audit }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1440px;margin:0 auto;background:var(--color-bg);min-height:calc(100vh - 50px);display:grid;grid-template-columns:220px minmax(0,1fr)">
+  <div style="border-right:2px solid var(--color-divider);padding:18px 0">
+    <div style="font:800 17px/1 var(--font-heading);padding:0 18px 16px;border-bottom:2px solid var(--color-divider)">Flying Colours</div>
+    <div style="padding:14px 18px 8px;font-size:12px;color:var(--color-neutral-700)">Hassan · Owner</div>
+    <sc-for list="{{ anav }}" as="n" hint-placeholder-count="11"><button onClick="{{ n.onClick }}" style="width:100%;border:0;cursor:pointer;padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;background:{{ n.bg }};color:{{ n.fg }}">{{ n.label }}<span style="font-weight:800;color:{{ n.cf }}">{{ n.count }}</span></button></sc-for>
+  </div>
+  <div style="min-width:0">
+    <div style="padding:22px 28px 18px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600">Placements · payments · permissions</div><h2 style="margin:4px 0 0">Audit log</h2></div><button class="btn btn-secondary" onClick="{{ exportToast }}">Export</button></div>
+    <div style="padding:18px 28px">
+      <div style="font-size:13px;color:var(--color-neutral-700);margin-bottom:8px">Actions you take elsewhere in this prototype appear at the top.</div>
+      <table class="table">
+        <thead><tr><th>When</th><th>Who</th><th>Action</th><th>Target</th></tr></thead>
+        <tbody><sc-for list="{{ audit }}" as="a" hint-placeholder-count="6">
+          <tr><td style="font-size:13px;white-space:nowrap">{{ a.t }}</td><td><div style="font-weight:600">{{ a.actor }}</div><div style="font-size:12px;color:var(--color-neutral-700)">{{ a.role }}</div></td><td>{{ a.act }}</td><td style="font-size:13px">{{ a.target }}</td></tr>
+        </sc-for></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const Q=[
+{id:'amara',name:'Amara Okafor',age:8,at:'Mon 6:15 pm',st:'Submitted',dur:'1:12'},
+{id:'tolu',name:'Tolu Adeyemi',age:8,at:'Mon 7:42 pm',st:'Submitted',dur:'0:58'},
+{id:'ife',name:'Ife Olatunji',age:8,at:'Mon 8:20 pm',st:'Submitted',dur:'1:30'},
+{id:'emeka',name:'Emeka Ude',age:9,at:'Mon 9:10 pm',st:'Submitted',dur:'1:05'},
+{id:'chidi',name:'Chidi Eze',age:9,at:'Tue 9:02 am',st:'Submitted',dur:'1:48'},
+{id:'kemi',name:'Kemi Adebayo',age:7,at:'Tue 11:45 am',st:'Submitted',dur:'0:41'},
+{id:'halima',name:'Halima Musa',age:8,at:'Tue 1:30 pm',st:'Submitted',dur:'1:20'},
+{id:'ngozi',name:'Ngozi Ibe',age:9,at:'Tue 2:55 pm',st:'Submitted',dur:'1:57'},
+{id:'zainab',name:'Zainab Bello',age:7,at:'Tue 4:10 pm',st:'Late',dur:'1:02'},
+{id:'david',name:'David Obi',age:8,at:'—',st:'Missing'},
+{id:'blessing',name:'Blessing Nwosu',age:9,at:'—',st:'Missing'},
+{id:'tobi',name:'Tobi Lawal',age:7,at:'—',st:'Missing'}];
+const CLASSES={lv:{name:'Little Voices',band:'Ages 5–6 · Starter',tutor:'Mr Segun',cap:20,filled:18,cohort:'Sat 10 Oct'},
+sr:{name:'Starlight Readers',band:'Ages 7–9 · Beginner',tutor:'Ms Adaeze',cap:20,filled:17,cohort:'Sat 10 Oct'},
+we:{name:'Word Explorers',band:'Ages 7–9 · Beginner',tutor:'Ms Ruth',cap:20,filled:20,cohort:'Sat 10 Oct'},
+bs:{name:'Bold Speakers',band:'Ages 10–12 · Intermediate',tutor:'Mr Tunde',cap:20,filled:15,cohort:'Sat 10 Oct'},
+ya:{name:'Young Authors',band:'Ages 10–13 · Advanced',tutor:'Ms Ruth',cap:16,filled:12,cohort:'Sat 17 Oct'}};
+const PQ=[
+{id:'seun',name:'Oluwaseun Bakare',age:6,level:'Starter',parent:'Mr K. Bakare',paid:'Mon 28 Sep · Paystack',wait:'1 day',goals:'Build confidence speaking to adults.',sug:['lv']},
+{id:'musa',name:'Musa Abdullahi',age:7,level:'Beginner',parent:'Mrs A. Abdullahi',paid:'Mon 28 Sep · Transfer',wait:'1 day',goals:'Reading fluency; mixes up b and d.',sug:['we','sr']},
+{id:'adaeze',name:'Adaeze Nnamdi',age:10,level:'Intermediate',parent:'Dr O. Nnamdi',paid:'Sun 27 Sep · Paystack',wait:'2 days',goals:'Public speaking for school debates.',sug:['bs']},
+{id:'chioma',name:'Chioma Okeke',age:12,level:'Advanced',parent:'Mr C. Okeke (UK)',paid:'Sat 26 Sep · Card USD',wait:'3 days',goals:'Creative writing and essay structure.',sug:['ya','bs']},
+{id:'fiyin',name:'Fiyin Ojo',age:9,level:'Beginner',parent:'Mrs B. Ojo',paid:'Tue 29 Sep · Transfer',wait:'Today',goals:'Pronunciation and clear reading.',sug:['sr','we']},
+{id:'ayo',name:'Ayo Martins',age:5,level:'Starter',parent:'Mrs T. Martins',paid:'Tue 29 Sep · Paystack',wait:'Today',goals:'Phonics and first words.',sug:['lv']}];
+const PAYS=[
+{id:'p1',parent:'Mrs Ngozi Eze',learner:'Chidi Eze',amount:'₦120,000',plan:'Annual',bank:'GTBank',ref:'FC-CHIDI-2210',sent:'Mon 28 Sep, 2:14 pm',alert:'Bank alert matched · ₦120,000',ok:true},
+{id:'p2',parent:'Mr Ibrahim Musa',learner:'Halima Musa',amount:'₦42,000',plan:'Instalment 2 of 3',bank:'Access',ref:'FC-HALIMA-1187',sent:'Mon 28 Sep, 6:40 pm',alert:'No bank alert found yet',ok:false},
+{id:'p3',parent:'Mrs Bisi Ojo',learner:'Fiyin Ojo',amount:'₦120,000',plan:'Annual',bank:'Zenith',ref:'FC-FIYIN-3302',sent:'Tue 29 Sep, 8:05 am',alert:'Bank alert matched · ₦120,000',ok:true},
+{id:'p4',parent:'Mrs A. Abdullahi',learner:'Musa Abdullahi',amount:'₦120,000',plan:'Annual',bank:'UBA',ref:'FC-MUSA-0915',sent:'Tue 29 Sep, 11:20 am',alert:'Amount differs · ₦100,000 received',ok:false}];
+const REN=[
+{id:'r1',learner:'Tolu Adeyemi',parent:'Mrs F. Adeyemi',plan:'Annual',ends:'Mon 5 Oct',left:'6 days',bal:'₦0',rem:'7-day sent',grp:'expiring'},
+{id:'r2',learner:'Emeka Ude',parent:'Mr P. Ude',plan:'Annual',ends:'Sat 3 Oct',left:'4 days',bal:'₦0',rem:'7-day, 3-day sent',grp:'expiring'},
+{id:'r3',learner:'Blessing Nwosu',parent:'Mrs J. Nwosu',plan:'Annual',ends:'Wed 7 Oct',left:'8 days',bal:'₦0',rem:'Due tomorrow',grp:'expiring'},
+{id:'r4',learner:'Ife Olatunji',parent:'Mr S. Olatunji',plan:'Annual',ends:'Sat 26 Sep',left:'Ended 3 days ago',bal:'₦0',rem:'Expiry sent',grp:'expired'},
+{id:'r5',learner:'David Obi',parent:'Mrs R. Obi',plan:'Annual',ends:'Sun 20 Sep',left:'Grace ends Sun 4 Oct',bal:'₦0',rem:'Expiry sent · 2 calls',grp:'expired'},
+{id:'r6',learner:'Kemi Adebayo',parent:'Mrs T. Adebayo',plan:'Instalments',ends:'Jun 2027',left:'Instalment 2 overdue 9 days',bal:'₦42,000',rem:'3 reminders',grp:'arrears'},
+{id:'r7',learner:'Tobi Lawal',parent:'Mr D. Lawal',plan:'Instalments',ends:'Mar 2027',left:'Instalment 3 overdue 2 days',bal:'₦42,000',rem:'1 reminder',grp:'arrears'}];
+const CH={
+tolu:{head:'Tolu submitted Monday’s task. Feedback arrives today at 6 pm.',task:'My favourite food — 1-min video',taskTag:'Submitted',taskAt:'Mon 7:42 pm',tagBg:'var(--color-neutral-200)',tagFg:'var(--color-text)',fb:'“Lovely clear reading, Tolu! Slow down on the long words.” — Ms Adaeze',fbTag:'Fluency 4/5',att:'PPPLPPAP',attNote:'6 present · 1 late · 1 absent',subKick:'Subscription expiring',subLine:'Ends 5 Oct — 6 days left',subPlan:'Annual plan · ₦120,000'},
+dami:{head:'Dami hasn’t sent Monday’s task yet. It’s due today at 3 pm.',task:'Debate: school uniforms — 2-min video',taskTag:'Not submitted',taskAt:'Due in 2 h',tagBg:'var(--color-accent)',tagFg:'#fff',fb:'“Strong opening argument. Use linking words: however, therefore.” — Mr Tunde',fbTag:'Grammar 3/5',att:'PPPPPPPP',attNote:'8 of 8 present',subKick:'Subscription active',subLine:'Ends 14 Mar 2027',subPlan:'Annual plan · paid in full'}};
+const SKILLS=[['pron','Pronunciation'],['gram','Grammar'],['flu','Fluency'],['conf','Confidence']];
+const TAGS=['Pronunciation','Grammar','Fluency','Vocabulary','Confidence','Storytelling'];
+const INK='var(--color-text)',ACC='var(--color-accent)',BG='var(--color-bg)';
+class Component extends DCLogic {
+  state={screen:'p-home',child:'tolu',step:1,plan:'annual',pay:'card',paying:false,
+    playing:false,fbSeen:false,sub:'idle',secs:0,pct:0,
+    reviewed:{ife:1,emeka:1},sel:'amara',qf:'todo',scores:{pron:4,gram:3,flu:4,conf:4},tags:{Pronunciation:1},rel:'tue',vnote:'idle',
+    placed:{},selP:'seun',pays:{},selPay:'p1',rtab:'expiring',outcomes:{},toast:'',
+    otp:'',otpSent:false,pin:'',who:null,att:{},recAttached:false,tpl:1,rtype:'Video',slot:0,dl:1,
+    moveOpen:false,moveTo:'bs',moved:'',selClass:'sr',tutorPick:{},annAud:'class',annCh:{wa:1,app:1,email:0},annSent:false,impStep:1,range:'week'};
+  componentDidMount(){try{const s=localStorage.getItem('fc-proto-screen');if(s)this.setState({screen:s});}catch(e){}}
+  componentWillUnmount(){clearInterval(this._otp);clearInterval(this._rec);clearInterval(this._up);clearTimeout(this._t);clearTimeout(this._p);}
+  go(screen){this.setState({screen});try{localStorage.setItem('fc-proto-screen',screen)}catch(e){}window.scrollTo(0,0);}
+  toast(msg){this.setState({toast:msg});clearTimeout(this._t);this._t=setTimeout(()=>this.setState({toast:''}),2800);}
+  tagStyle(st){return {Submitted:['var(--color-neutral-200)',INK],Late:['var(--color-accent-100)','var(--color-accent-800)'],Missing:[ACC,'#fff'],Reviewed:[INK,BG]}[st];}
+  extra(s,go,set,T){
+    const sel=(a,b)=>({bg:a===b?INK:'transparent',fg:a===b?'#fff':INK});
+    const ptabs=[['p-home','Home'],['p-progress','Progress'],['p-inbox','Messages']].map(([id,label])=>({label,onClick:go(id),fg:s.screen===id?'var(--color-accent-700)':INK,bd:s.screen===id?ACC:'transparent'}));
+    const otpBoxes=[0,1,2,3,4,5].map(i=>({d:s.otp[i]||'',bd:s.otpSent&&i===s.otp.length?ACC:'var(--color-divider)'}));
+    const onSendCode=()=>{this.setState({otpSent:true,otp:''});const code='482913';let i=0;clearInterval(this._otp);this._otp=setInterval(()=>{i++;this.setState({otp:code.slice(0,i)});if(i>=6)clearInterval(this._otp);},180);};
+    const whos=[['Tolu','8','Starlight Readers'],['Dami','11','Bold Speakers']].map(([name,age,cls])=>({name,initial:name[0],age,cls,onClick:set({who:name,pin:''})}));
+    const pinDots=[0,1,2,3].map(i=>({bg:i<s.pin.length?'#fff':'transparent'}));
+    const keys=['1','2','3','4','5','6','7','8','9','','0','⌫'].map(k=>({k,has:!!k,blank:!k,onClick:()=>{if(k==='⌫'){this.setState(p=>({pin:p.pin.slice(0,-1)}));return;}const np=(this.state.pin+k).slice(0,4);this.setState({pin:np});if(np.length===4)setTimeout(()=>{this.setState({pin:'',who:null});this.go('l-home');},350);}}));
+    const roster=Q.map(q=>{const v=s.att[q.id]||'P';return {...q,v,opts:[['P','Present'],['L','Late'],['A','Absent']].map(([k,label])=>({label,onClick:()=>this.setState(p=>({att:{...p.att,[q.id]:k}})),bg:v===k?(k==='A'?ACC:INK):'transparent',fg:v===k?'#fff':INK}))};});
+    const attN={P:roster.filter(r=>r.v==='P').length,L:roster.filter(r=>r.v==='L').length,A:roster.filter(r=>r.v==='A').length};
+    const TPL=[{name:'Picture talk',type:'Video',title:'Describe the market picture',ins:'Look at the market picture. Say five things you can see, using colour words.'},{name:'Retell a story',type:'Video',title:'Kola and the Kite: tell it your way',ins:'Read the story sheet with a grown-up. Tell the story in your own words, then say what you would do if you were Kola.'},{name:'Read aloud',type:'Audio',title:'Read “The Rain Song” aloud',ins:'Read the poem slowly and clearly. Take a breath at each full stop.'},{name:'Write five sentences',type:'Photo',title:'My weekend in five sentences',ins:'Write five sentences about your weekend. Use “first”, “then” and “finally”. Take a photo of your page.'},{name:'Show and tell',type:'Video',title:'Show and tell: something special',ins:'Show us something special from home. Say what it is, who gave it to you and why you like it.'}];
+    const tp=TPL[s.tpl];
+    const tpls=TPL.map((t,i)=>({...t,onClick:set({tpl:i,rtype:t.type}),bg:i===s.tpl?'var(--color-accent-100)':'transparent',bl:i===s.tpl?ACC:'transparent'}));
+    const rtypes=['Video','Audio','Photo','Text'].map(x=>({label:x,onClick:set({rtype:x}),...sel(x,s.rtype)}));
+    const SLOTS=['Wed 30 Sep · 9:00 am','Wed 30 Sep · 4:00 pm','Thu 1 Oct · 9:00 am'];
+    const DUE=[['Thu 1 Oct · 9:00 am','Thu 1 Oct · 3:00 pm'],['Thu 1 Oct · 4:00 pm','Thu 1 Oct · 10:00 pm'],['Fri 2 Oct · 9:00 am','Fri 2 Oct · 3:00 pm']];
+    const slots=SLOTS.map((x,i)=>({label:x,onClick:set({slot:i}),...sel(i,s.slot)}));
+    const dls=['24 hours','30 hours'].map((x,i)=>({label:x,onClick:set({dl:i}),...sel(i,s.dl)}));
+    const task={...tp,rtype:s.rtype,release:SLOTS[s.slot],due:DUE[s.slot][s.dl],verb:{Video:'Record video',Audio:'Record voice',Photo:'Take photo',Text:'Write answer'}[s.rtype]};
+    const TL=[{d:'Tue 29 Sep',k:'Feedback',t:'Fluency 4 · Grammar 3 — “Say ‘I ate’, not ‘I eated’.”',by:'Ms Adaeze'},{d:'Mon 28 Sep',k:'Submission',t:'My favourite food · video 0:58 · on time',by:'Tolu'},{d:'Sun 27 Sep',k:'Attendance',t:'Live class · present',by:'Ms Adaeze'},{d:'Sat 26 Sep',k:'Attendance',t:'Live class · absent — recording sent to parent',by:'System'},{d:'Fri 25 Sep',k:'Feedback',t:'Grammar 3 — “Watch past tense: goed → went.”',by:'Ms Adaeze'},{d:'1 Jun 2026',k:'Class move',t:'Word Explorers → Starlight Readers · reason: level up',by:'Mrs Ronke'},{d:'5 Oct 2025',k:'Payment',t:'₦120,000 · Paystack · auto-verified',by:'System'},{d:'4 Oct 2025',k:'Registered',t:'Guardian Funmi Adeyemi · consent recorded',by:'Parent'}];
+    const timeline=(s.moved?[{d:'Tue 29 Sep',k:'Class move',t:'Starlight Readers → '+s.moved+' · reason: schedule',by:'Hassan'}]:[]).concat(TL).map(e=>({...e,kc:e.k==='Feedback'||e.k==='Class move'?'var(--color-accent-700)':'var(--color-neutral-700)'}));
+    const moveOpts=['we','bs','lv'].map(k=>{const seats=CLASSES[k].cap-CLASSES[k].filled;const full=seats<=0;return {name:CLASSES[k].name,band:CLASSES[k].band,seatLabel:full?'Full · join waitlist instead':seats+' seats left',onClick:full?T(CLASSES[k].name+' is full. Add Tolu to its waitlist from the placement queue.'):set({moveTo:k}),bd:s.moveTo===k?ACC:'var(--color-divider)',bg:s.moveTo===k?'var(--color-accent-100)':'transparent',op:full?'0.45':'1',cur:full?'not-allowed':'pointer'};});
+    const onMove=()=>{const n=CLASSES[s.moveTo].name;this.setState({moveOpen:false,moved:n});this.toast('Tolu moved to '+n+'. History kept; new tutor and parent notified.');};
+    const TUT=['Ms Adaeze','Ms Ruth','Mr Segun','Mr Tunde','Mrs Ronke'];
+    const classRows=Object.entries(CLASSES).map(([k,c])=>({...c,k,tutorNow:s.tutorPick[k]||c.tutor,pct:Math.round(c.filled/c.cap*100)+'%',full:c.filled>=c.cap,onClick:set({selClass:k}),bg:k===s.selClass?'var(--color-accent-100)':'transparent'}));
+    const cc={...CLASSES[s.selClass]};cc.tutorNow=s.tutorPick[s.selClass]||cc.tutor;cc.zoom='zoom.us/j/'+({lv:'81234',sr:'84410',we:'86022',bs:'83317',ya:'85590'}[s.selClass])+' 5521';
+    const tutorOpts=TUT.map(t=>({label:t,onClick:()=>{this.setState(p=>({tutorPick:{...p.tutorPick,[p.selClass]:t}}));this.toast(t+' now teaches '+cc.name+' and inherits its full class history.');},...sel(t,cc.tutorNow)}));
+    const ranges=[['week','This week'],['month','September'],['term','Term']].map(([id,label])=>({label,onClick:set({range:id}),...sel(id,s.range)}));
+    const bars=[['Starlight Readers',75,91],['Word Explorers',85,95],['Little Voices',61,83],['Bold Speakers',87,93],['Young Authors',92,100]].map(([name,sub,att])=>({name,sub:sub+'%',att:att+'%',subW:sub+'%',attW:att+'%'}));
+    const dyn=[];Object.entries(s.placed).forEach(([id,k])=>{const p=PQ.find(x=>x.id===id);dyn.push({t:'Just now',actor:'Hassan',role:'Owner',act:'Placed learner',target:p.name+' → '+CLASSES[k].name});});
+    Object.entries(s.pays).forEach(([id,v])=>{const p=PAYS.find(x=>x.id===id);dyn.push({t:'Just now',actor:'Hassan',role:'Owner',act:v==='ok'?'Approved payment':'Rejected payment',target:p.parent+' · '+p.amount+' · '+p.ref});});
+    Object.entries(s.outcomes).forEach(([id,v])=>{const r=REN.find(x=>x.id===id);dyn.push({t:'Just now',actor:'Hassan',role:'Owner',act:'Renewal outcome: '+v,target:r.learner});});
+    const audit=dyn.concat([{t:'Tue 29 Sep · 1:12 pm',actor:'Blessing A.',role:'Customer service',act:'Approved payment',target:'Mrs K. Bakare · ₦120,000 · Paystack webhook matched'},{t:'Tue 29 Sep · 11:40 am',actor:'Mrs Ronke',role:'Lead tutor',act:'Placed learner',target:'Tomi Ade → Little Voices'},{t:'Tue 29 Sep · 9:03 am',actor:'System',role:'Paystack',act:'Reversal flagged',target:'Mr O. Uche · ₦120,000 · ref PSK-88213'},{t:'Mon 28 Sep · 6:20 pm',actor:'Hassan',role:'Owner',act:'Changed role',target:'Blessing A. · Tutor → Customer service'},{t:'Mon 28 Sep · 4:02 pm',actor:'Mrs Ronke',role:'Lead tutor',act:'Reassigned tutor',target:'Word Explorers · Ms Kemi → Ms Ruth'},{t:'Sun 27 Sep · 6:15 pm',actor:'Ms Adaeze',role:'Tutor',act:'Saved register',target:'Starlight Readers · Sun 27 Sep · 2 absent'}]);
+    const annAuds=[['class','One class'],['all','All learners'],['parents','All parents']].map(([id,label])=>({label,onClick:set({annAud:id}),...sel(id,s.annAud)}));
+    const annChs=[['wa','WhatsApp'],['app','In-app'],['email','Email']].map(([id,label])=>({label,on:!!s.annCh[id],onClick:()=>this.setState(p=>({annCh:{...p.annCh,[id]:!p.annCh[id]}})),bg:s.annCh[id]?INK:'transparent',fg:s.annCh[id]?'#fff':INK}));
+    const annReach=s.annAud==='class'?'17 families in Starlight Readers':s.annAud==='all'?'612 learners · 540 families':'540 parents';
+    const imp={s1:s.impStep===1,s2:s.impStep===2,s3:s.impStep===3,s4:s.impStep===4};
+    const impSteps=['Upload','Match columns','Check','Done'].map((l,i)=>({n:i+1,label:l,bg:i+1<s.impStep?INK:i+1===s.impStep?ACC:'transparent',fg:i+1<=s.impStep?'#fff':'var(--color-neutral-700)'}));
+    const skillTrend=[['Pronunciation',[3,3,3,4,3,4,4,4]],['Grammar',[2,2,3,2,3,3,3,3]],['Fluency',[3,3,4,4,4,4,5,4]],['Confidence',[2,3,3,3,4,4,4,5]]].map(([label,v])=>({label,now:v[v.length-1],bars:v.map((x,i)=>({h:(x*9)+'px',bg:i===v.length-1?ACC:INK}))}));
+    return {toParentSignup:(e)=>{e&&e.preventDefault&&e.preventDefault();this.setState({step:1});this.go('p-signup');},ptabs,otpBoxes,onSendCode,otpSent:s.otpSent,otpIdle:!s.otpSent,otpReady:s.otp.length===6,onVerify:go('p-home'),toPin:go('l-pin'),
+      whos,noWho:!s.who,hasWho:!!s.who,who:s.who,pinDots,keys,onBackWho:set({who:null,pin:''}),
+      roster,attN,onAllPresent:set({att:{}}),recOff:!s.recAttached,recOn:s.recAttached,onAttachRec:set({recAttached:true}),
+      onSaveReg:()=>{this.toast('Register saved: '+attN.P+' present, '+attN.L+' late, '+attN.A+' absent. Absent parents get the recording link.');},
+      toSession:go('t-session'),toTask:go('t-task'),tpls,rtypes,slots,dls,task,onSchedule:()=>this.toast('“'+task.title+'” scheduled for '+task.release+'. Learners notified on release.'),
+      timeline,moveOpen:s.moveOpen,onOpenMove:set({moveOpen:true}),onCloseMove:set({moveOpen:false}),moveOpts,onMove,movedTo:s.moved,curClassName:s.moved||'Starlight Readers',
+      classRows,cc,tutorOpts,toLearner:go('a-learner'),ranges,bars,audit,
+      annAuds,annChs,annReach,annUnsent:!s.annSent,annIsSent:s.annSent,onSendAnn:()=>{this.setState({annSent:true});this.toast('Announcement sent to '+annReach+'.');},onNewAnn:set({annSent:false}),
+      imp,impSteps,impNext:set({impStep:Math.min(4,s.impStep+1)}),impBack:set({impStep:Math.max(1,s.impStep-1)}),impReset:set({impStep:1}),skillTrend,
+      inviteToast:T('Invite sent. New staff must set up 2-factor sign-in before first use.')};
+  }
+  renderVals(){
+    const s=this.state,go=x=>()=>this.go(x),set=o=>()=>this.setState(o),T=m=>()=>this.toast(m);
+    const role=s.screen[0];
+    const ROLES=[['p','Parent','p-home'],['l','Learner','l-home'],['t','Tutor','t-home'],['a','Admin','a-home']];
+    const SCR={p:[['p-signin','Sign in'],['p-home','Home'],['p-progress','Progress'],['p-inbox','Messages'],['p-signup','Sign-up + pay']],l:[['l-pin','Sign in (PIN)'],['l-home','This week'],['l-task','Submit task']],t:[['t-home','Review queue'],['t-feedback','Give feedback'],['t-session','Attendance'],['t-task','New task']],a:[['a-home','Overview'],['a-placement','Placement'],['a-payments','Payments'],['a-renewals','Renewals'],['a-learner','Learner profile'],['a-classes','Classes'],['a-reports','Reports'],['a-announce','Announce'],['a-import','Import'],['a-staff','Staff'],['a-audit','Audit log']]};
+    const roles=ROLES.map(([k,label,sc])=>({label,onClick:go(sc),bg:k===role?ACC:'transparent',fg:k===role?'#fff':'var(--color-neutral-300)'}));
+    const screens=SCR[role].map(([id,label])=>({label,onClick:go(id),fg:id===s.screen?'#fff':'var(--color-neutral-400)',bd:id===s.screen?ACC:'transparent'}));
+    const on={};['p-signin','p-home','p-progress','p-inbox','p-signup','l-pin','l-home','l-task','t-home','t-feedback','t-session','t-task','a-home','a-placement','a-payments','a-renewals','a-learner','a-classes','a-reports','a-announce','a-import','a-staff','a-audit'].forEach(id=>on[id.replace('-','_')]=s.screen===id);
+    // parent
+    const c0=CH[s.child];
+    const ch={...c0,att:c0.att.split('').map(x=>({bg:x==='P'?INK:x==='L'?'var(--color-neutral-500)':'transparent',bd:x==='A'?ACC:(x==='P'?INK:'var(--color-neutral-500)')}))};
+    const childTabs=[['tolu','Tolu, 8','Starlight Readers'],['dami','Dami, 11','Bold Speakers']].map(([id,label,cls])=>({label,cls,onClick:set({child:id}),bd:s.child===id?ACC:'transparent',fg:s.child===id?INK:'var(--color-neutral-700)'}));
+    const steps=['Guardian','Child','Plan','Pay'].map((label,i)=>({n:i+1,label,bg:i+1<s.step?INK:i+1===s.step?ACC:'transparent',fg:i+1<=s.step?'#fff':'var(--color-neutral-700)'}));
+    const st={s1:s.step===1,s2:s.step===2,s3:s.step===3,s4:s.step===4,s5:s.step===5};
+    const PL=[{id:'annual',name:'Annual',price:'₦120,000',due:'₦120,000',sub:'One payment for 12 months.'},{id:'instal',name:'Annual in 3 instalments',price:'3 × ₦42,000',due:'₦42,000',sub:'Today, then 1 Jan and 1 Apr. We remind you before each one.'},{id:'usd',name:'Diaspora annual',price:'$150',due:'$150',sub:'Pay by card in USD. Class times shown in your time zone.'}];
+    const plans=PL.map(p=>({...p,onClick:set({plan:p.id}),bd:s.plan===p.id?ACC:'var(--color-divider)',dot:s.plan===p.id?ACC:'transparent',bg:s.plan===p.id?'var(--color-accent-100)':'transparent'}));
+    const planSel=PL.find(p=>p.id===s.plan);
+    const card=s.pay==='card';
+    const pm={card,bank:!card,cardBg:card?INK:'transparent',cardFg:card?'#fff':INK,bankBg:!card?INK:'transparent',bankFg:!card?'#fff':INK};
+    const payLabel=s.paying?'Confirming payment…':card?`Pay ${planSel.due} with Paystack`:'I’ve sent the transfer';
+    const done=card?{head:'Payment confirmed',sub:`${planSel.due} received for Tolu. Receipt sent to your email.`}:{head:'Transfer received for checking',sub:'We’ll match it to your bank alert within 24 hours and message you on WhatsApp.'};
+    // learner
+    const secsLabel=`${Math.floor(s.secs/60)}:${String(s.secs%60).padStart(2,'0')}`;
+    const L={locked:!s.fbSeen,open:s.fbSeen&&s.sub!=='done',done:s.sub==='done',unseen:!s.fbSeen,seen:s.fbSeen,idle:s.sub==='idle',rec:s.sub==='rec',review:s.sub==='review',up:s.sub==='up',sent:s.sub==='done',playing:s.playing,paused:!s.playing};
+    // tutor
+    const rows=Q.map(q=>{const stt=s.reviewed[q.id]?'Reviewed':q.st;const [tb,tf]=this.tagStyle(stt);const miss=q.st==='Missing';
+      return {...q,stt,tb,tf,action:miss?'Nudge parent':stt==='Reviewed'?'Open':'Review',
+        onClick:miss?T(`WhatsApp reminder sent to ${q.name.split(' ')[0]}’s parent`):()=>{this.setState({sel:q.id});this.go('t-feedback');},
+        abg:miss||stt==='Reviewed'?'transparent':INK,afg:miss||stt==='Reviewed'?INK:'#fff',
+        rowBg:q.id===s.sel?'var(--color-accent-100)':'transparent',late:q.st==='Late'};});
+    const subm=rows.filter(r=>r.st!=='Missing'),nRev=rows.filter(r=>r.stt==='Reviewed').length,nMiss=rows.filter(r=>r.st==='Missing').length,nTodo=subm.length-nRev;
+    const QF=[['todo',`To review · ${nTodo}`],['all',`All · ${rows.length}`],['missing',`Missing · ${nMiss}`],['done',`Reviewed · ${nRev}`]];
+    const qtabs=QF.map(([id,label])=>({label,onClick:set({qf:id}),bg:s.qf===id?INK:'transparent',fg:s.qf===id?'#fff':INK}));
+    const qrows=rows.filter(r=>s.qf==='all'||(s.qf==='todo'&&r.st!=='Missing'&&r.stt!=='Reviewed')||(s.qf==='missing'&&r.st==='Missing')||(s.qf==='done'&&r.stt==='Reviewed'));
+    const tstats={sub:subm.length,rev:nRev,miss:nMiss,todo:nTodo,pct:Math.round(nRev/subm.length*100)+'%'};
+    const fbList=subm.map(r=>({...r,onClick:set({sel:r.id}),bg:r.id===s.sel?INK:'transparent',fg:r.id===s.sel?'#fff':INK,sub2:r.id===s.sel?'var(--color-neutral-400)':'var(--color-neutral-700)'}));
+    const cq=Q.find(q=>q.id===s.sel)||Q[0];
+    const cur={...cq,first:cq.name.split(' ')[0],reviewed:!!s.reviewed[cq.id],late:cq.st==='Late'};
+    const skills=SKILLS.map(([k,label])=>({label,val:s.scores[k],dots:[1,2,3,4,5].map(n=>({n,onClick:()=>this.setState(p=>({scores:{...p.scores,[k]:n}})),bg:n<=s.scores[k]?ACC:'transparent',fg:n<=s.scores[k]?'#fff':'var(--color-neutral-700)'}))}));
+    const tags=TAGS.map(t=>({label:t,onClick:()=>this.setState(p=>({tags:{...p.tags,[t]:!p.tags[t]}})),bg:s.tags[t]?INK:'transparent',fg:s.tags[t]?'#fff':INK}));
+    const rel=[['tue','Tuesday correction · 6 pm'],['now','Release now']].map(([id,label])=>({label,onClick:set({rel:id}),bg:s.rel===id?INK:'transparent',fg:s.rel===id?'#fff':INK}));
+    const vn={idle:s.vnote==='idle',rec:s.vnote==='rec',done:s.vnote==='done'};
+    // admin
+    const placedCount=k=>Object.values(s.placed).filter(v=>v===k).length;
+    const nPlace=PQ.filter(p=>!s.placed[p.id]).length,nPay=PAYS.filter(p=>!s.pays[p.id]).length,nRen=REN.filter(r=>!s.outcomes[r.id]).length;
+    const NAV=[['a-home','Overview',''],['a-placement','Placement queue',nPlace],['a-payments','Payment approvals',nPay],['a-renewals','Renewals',nRen],['a-learner','Learners',''],['a-classes','Classes',''],['a-reports','Reports',''],['a-announce','Announcements',''],['a-import','Import learners',''],['a-staff','Staff & roles',''],['a-audit','Audit log','']];
+    const anav=NAV.map(([id,label,count])=>({label,count:count===0?'':count,onClick:id?go(id):T(`${label} isn’t part of this prototype`),bg:id===s.screen?INK:'transparent',fg:id===s.screen?'#fff':INK,cf:id===s.screen?'var(--color-accent-400)':'var(--color-accent-700)'}));
+    const pqRows=PQ.map(p=>({...p,placedTo:s.placed[p.id]?CLASSES[s.placed[p.id]].name:'',isPlaced:!!s.placed[p.id],notPlaced:!s.placed[p.id],onClick:set({selP:p.id}),bg:p.id===s.selP?'var(--color-accent-100)':'transparent',bl:p.id===s.selP?ACC:'transparent'}));
+    const sp=PQ.find(p=>p.id===s.selP);
+    const spPlaced=s.placed[sp.id];
+    const sugg=sp.sug.map((k,i)=>{const c=CLASSES[k];const f=c.filled+placedCount(k);const seats=c.cap-f;const full=seats<=0;
+      return {...c,f,seats,full,open:!full,best:i===0&&!full,pct:Math.min(100,Math.round(f/c.cap*100))+'%',seatLabel:full?'Full':`${seats} seat${seats===1?'':'s'} left`,
+        why:`Matches age ${sp.age} · ${sp.level}`,
+        onPlace:()=>{const next=PQ.find(p=>p.id!==sp.id&&!s.placed[p.id]);this.setState(p=>({placed:{...p.placed,[sp.id]:k},selP:next?next.id:p.selP}));this.toast(`${sp.name.split(' ')[0]} placed in ${c.name}. ${c.tutor} and ${sp.parent} notified; welcome guide sent.`);},
+        onWait:T(`${sp.name.split(' ')[0]} added to the ${c.name} waitlist`)};});
+    const allFull=sugg.every(c=>c.full);
+    const payRows=PAYS.map(p=>{const d=s.pays[p.id];return {...p,dec:d?d==='ok'?'Approved':'Rejected':'Pending',db:d==='ok'?INK:d==='no'?ACC:'var(--color-neutral-200)',df:d?'#fff':INK,onClick:set({selPay:p.id}),bg:p.id===s.selPay?'var(--color-accent-100)':'transparent'};});
+    const spay=PAYS.find(p=>p.id===s.selPay);
+    const decide=v=>()=>{const next=PAYS.find(p=>p.id!==spay.id&&!s.pays[p.id]);this.setState(p=>({pays:{...p.pays,[spay.id]:v},selPay:next?next.id:p.selPay}));this.toast(v==='ok'?`Approved. ${spay.learner.split(' ')[0]} moves to the placement queue; receipt sent to ${spay.parent}.`:`Rejected. ${spay.parent} asked to resend proof on WhatsApp.`);};
+    const payDecided=!!s.pays[spay.id];
+    const RT=[['expiring','Expiring ≤ 7 days'],['expired','Expired'],['arrears','In arrears']];
+    const rtabs=RT.map(([id,label])=>({label:`${label} · ${REN.filter(r=>r.grp===id&&!s.outcomes[r.id]).length}`,onClick:set({rtab:id}),bg:s.rtab===id?INK:'transparent',fg:s.rtab===id?'#fff':INK}));
+    const OUT={renewed:['Renewed',INK],grace:['Grace · 7 days','var(--color-neutral-600)'],exit:['Exited',ACC]};
+    const renRows=REN.filter(r=>r.grp===s.rtab).map(r=>{const o=s.outcomes[r.id];const setO=v=>()=>{this.setState(p=>({outcomes:{...p.outcomes,[r.id]:v}}));this.toast(v==='exit'?`${r.learner} exited. Removed from class roster; history kept.`:v==='renewed'?`${r.learner} marked renewed. Subscription extended 12 months.`:`${r.learner} given a 7-day grace period.`);};
+      return {...r,has:!!o,none:!o,oLabel:o?OUT[o][0]:'',oBg:o?OUT[o][1]:'',onRenewed:setO('renewed'),onGrace:setO('grace'),onExit:setO('exit'),onUndo:()=>this.setState(p=>{const x={...p.outcomes};delete x[r.id];return {outcomes:x};}),arrears:r.grp==='arrears'}});
+    const counts={place:nPlace,pay:nPay,ren:nRen};
+    return {...this.extra(s,go,set,T),roles,screens,on,toast:s.toast,
+      ch,childTabs,onRenew:()=>{this.setState({step:4,plan:'annual'});this.go('p-signup');},addChild:T('Not in this prototype'),recToast:T('Opens Sunday’s class recording (Tolu’s class only)'),
+      steps,st,plans,planSel,pm,payLabel,done,
+      next:set({step:Math.min(5,s.step+1)}),back:set({step:Math.max(1,s.step-1)}),restart:set({step:1}),toParentHome:go('p-home'),
+      onPayCard:set({pay:'card'}),onPayBank:set({pay:'bank'}),
+      onPay:()=>{if(s.paying)return;this.setState({paying:true});this._p=setTimeout(()=>this.setState({paying:false,step:5}),1300);},
+      L,secsLabel,pctW:s.pct+'%',pctN:s.pct,
+      onPlay:set({playing:!s.playing}),onSeen:set({fbSeen:true,playing:false}),onStartTask:go('l-task'),toLearnerHome:go('l-home'),
+      onRecord:()=>{this.setState({sub:'rec',secs:0});clearInterval(this._rec);this._rec=setInterval(()=>this.setState(p=>({secs:Math.min(120,p.secs+1)})),1000);},
+      onStop:()=>{clearInterval(this._rec);this.setState(p=>({sub:'review',secs:Math.max(p.secs,52)}));},
+      onRedo:()=>{clearInterval(this._rec);this.setState({sub:'idle',secs:0});},
+      onSend:()=>{this.setState({sub:'up',pct:0});clearInterval(this._up);this._up=setInterval(()=>{const n=Math.min(100,this.state.pct+4+Math.round(Math.random()*6));this.setState({pct:n});if(n>=100){clearInterval(this._up);setTimeout(()=>this.setState({sub:'done'}),400);}},160);},
+      onResetLearner:()=>{clearInterval(this._rec);clearInterval(this._up);this.setState({sub:'idle',secs:0,pct:0,fbSeen:false,playing:false});this.go('l-home');},
+      qtabs,qrows,tstats,fbList,cur,skills,tags,rel,vn,toQueue:go('t-home'),
+      onVnote:set({vnote:s.vnote==='idle'?'rec':s.vnote==='rec'?'done':'idle'}),
+      attToast:T('Opens the Sunday register: 15 present, 2 absent. Absent parents already got the recording link.'),
+      onSaveNext:()=>{const first=cur.first;const nx=Q.find(q=>q.st!=='Missing'&&!s.reviewed[q.id]&&q.id!==cur.id);
+        this.setState(p=>({reviewed:{...p.reviewed,[cur.id]:1},sel:nx?nx.id:p.sel,scores:{pron:4,gram:3,flu:4,conf:4},tags:{},vnote:'idle'}));
+        this.toast(`Feedback for ${first} saved · ${s.rel==='now'?'released now, parent notified':'releases Tue 6 pm'}`);if(!nx)this.go('t-home');},
+      anav,counts,pqRows,sp,spPlaced:!!spPlaced,spOpen:!spPlaced,spPlacedTo:spPlaced?CLASSES[spPlaced].name:'',sugg,allFull,
+      onUnplace:()=>this.setState(p=>{const x={...p.placed};delete x[sp.id];return {placed:x};}),
+      payRows,spay,payDecided,payOpen:!payDecided,onApprove:decide('ok'),onReject:decide('no'),
+      goPay:go('a-payments'),goPlace:go('a-placement'),goRen:go('a-renewals'),rtabs,renRows,exportToast:T('Exports a CSV of this list')};
+  }
+}
+</script>
+</body>
+</html>
