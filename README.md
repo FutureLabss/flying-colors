@@ -79,6 +79,11 @@ What each role sees follows the prototype's capability table. Owner sees everyth
   - Children don't have credentials of their own. A parent registers the device (`learner-auth` issues a signed device token). On that device a child picks their name and types a PIN, which is bcrypt-hashed and locks after 5 wrong tries. The edge function then mints a session for the child's password-less account.
 - **Storage**: private buckets for submissions, voice notes, receipts and task attachments, served through 15-minute signed URLs. Video uploads use TUS, so a dropped connection resumes where it stopped.
 
+## Deploy
+
+- **Supabase:** create a project at supabase.com, then run `scripts/setup-hosted-supabase.sh` (see the variables at the top of the script). It links the project, applies migrations (optionally the demo seed), pushes the auth settings (phone sign-in and the WhatsApp OTP hook), deploys the edge functions and sets their secrets.
+- **Netlify:** deploy this repo; `netlify.toml` builds `web/`. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to the hosted project and redeploy.
+
 ## Integrations
 
 Every provider defaults to a stub that logs and succeeds. Set the secrets (`supabase/functions/.env` locally, `supabase secrets set` in production) to switch one to the real service:
