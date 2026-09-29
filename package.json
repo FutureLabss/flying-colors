@@ -1,0 +1,16 @@
+{
+  "name": "flying-colours",
+  "private": true,
+  "scripts": {
+    "db:start": "supabase start",
+    "db:reset": "supabase db reset",
+    "db:types": "supabase gen types typescript --local > web/src/lib/database.types.ts",
+    "functions": "supabase functions serve",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "e2e": "npm --prefix web run e2e"
+  },
+  "devDependencies": {
+    "supabase": "^2.118.0"
+  }
+}
